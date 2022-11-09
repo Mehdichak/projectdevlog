@@ -22,11 +22,13 @@ implémenter l'algorithme sur python
 Nettoyer et prendre en charge la base de données de prédiction
 Mettre en place une documentation
 Illustrer les données de prédictions
+Test unitaire
 
 ### Coder une visualisation sur une carte interractive 
 Nettoyer et prendre en charge la base de données de visualisation
 Transformer les données en une carte interractive à l'aide de python
 Mettre en place une documentation
+Test Unitaire 
 
 Pour réaliser ce projet nous allons répartir les tâches de la manière suivantes : Mehdi et Nicolas s'occuperont majoritairement de la partie concernant la construction du modèle prédictif et Axel s'occupera de la partie visualisation de la carte interractive. Chacun s'occupera majoritairement de ses tâches mais peut librment contribuer à d'autre tâche si le temps le lui permet. 
 
