@@ -18,19 +18,18 @@ Afin de réaliser nos objectif on considére les deux objectifs majeurs, compos�
 
 ### Construire un modèle prédictif
 
-##### Nettoyer et prendre en charge la base de données de prédiction
-##### Imaginer et vérifier mathématiquement l'algorithme prédictionnel
-##### Mettre en place les tests unitaires
-##### Implémenter l'algorithme sur python
-##### Illustrer les données de prédictions
-##### Mettre en place une documentation
+- Nettoyer et prendre en charge la base de données de prédiction
+- Imaginer et vérifier mathématiquement l'algorithme prédictionnel
+- Mettre en place les tests unitaires
+- Implémenter l'algorithme sur python
+- Illustrer les données de prédictions
+- Mettre en place une documentation
 
 ### Coder une visualisation sur une carte interractive 
-
-##### Nettoyer et prendre en charge la base de données de visualisation
-##### Mettre en places des tests unitaires
-##### Transformer les données en une carte interractive à l'aide de python
-##### Mettre en place une documentation
+- Nettoyer et prendre en charge la base de données de visualisation
+- Mettre en places des tests unitaires
+- Transformer les données en une carte interractive à l'aide de python
+- Mettre en place une documentation
 
 
 Pour réaliser ce projet nous allons répartir les tâches de la manière suivantes : Mehdi et Nicolas s'occuperont  de la partie concernant la construction du modèle prédictif et Axel s'occupera de la partie visualisation de la carte interractive. Chacun s'occupera principalement de ses tâches mais pourra être ammener à aider sur d'autre taches. 
