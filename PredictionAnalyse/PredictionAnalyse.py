@@ -1,6 +1,8 @@
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import datetime
+import numpy as np
+
 # On charge le fichier csv en tant que dataframe
 filepath="predictiondata.csv"
 table = pd.read_csv(filepath,sep=";")
@@ -16,4 +18,16 @@ table = table.set_index("Date - Heure")
 print(table.head())
 print(table.info())
 
-plt
+# On crée les moyennes horaires et journalière de chaque valeur pour chaque heure et chaque jour 
+HourMean = table.groupby(['Heure']).mean()
+DateMean = table.groupby(['Date']).mean()
+
+
+plt.style.use('_mpl-gallery')
+
+# plot
+fig, ax = plt.subplots()
+
+ax.plot(HourMean["Consommation (MW)"], linewidth=2.0)
+
+plt.show()
