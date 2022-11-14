@@ -22,12 +22,10 @@ print(table.info())
 HourMean = table.groupby(['Heure']).mean()
 DateMean = table.groupby(['Date']).mean()
 
+HourVar = table.groupby(['Heure']).var()
+DateVar = table.groupby(['Date']).var()
 
-plt.style.use('_mpl-gallery')
 
-# plot
 fig, ax = plt.subplots()
-
-ax.plot(HourMean["Consommation (MW)"], linewidth=2.0)
-
+ax.plot(DateMean["Consommation (MW)"])
 plt.show()
