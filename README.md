@@ -16,7 +16,7 @@ Axel de Montgolfier axel.de-montgolfier@etu.umontpellier.fr
 
 Afin de réaliser nos objectif on considére les deux objectifs majeurs, composée des problèmatiques suivantes : 
 
-### Construire un modèle prédictif
+#### Construire un modèle prédictif
 
 - Nettoyer et prendre en charge la base de données de prédiction
 - Imaginer et vérifier mathématiquement l'algorithme prédictionnel
@@ -25,7 +25,7 @@ Afin de réaliser nos objectif on considére les deux objectifs majeurs, compos�
 - Illustrer les données de prédictions
 - Mettre en place une documentation
 
-### Coder une visualisation sur une carte interractive 
+#### Coder une visualisation sur une carte interractive 
 - Nettoyer et prendre en charge la base de données de visualisation
 - Mettre en places des tests unitaires
 - Transformer les données en une carte interractive à l'aide de python
