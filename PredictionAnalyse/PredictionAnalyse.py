@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib as plt
-
+import datetime
 # On charge le fichier csv en tant que dataframe
 filepath="predictiondata.csv"
 table = pd.read_csv(filepath,sep=";")
@@ -12,7 +12,6 @@ table=table.drop(columns=["Périmètre","Nature","Date","Heure","Ech. comm. Angl
 table = table.dropna()
 
 # On selectionne comme index la donnée temporelle
-table = table.set_index("Date - Heure")
 print(table.head())
 
 print(table.info())
