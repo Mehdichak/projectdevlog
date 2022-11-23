@@ -1,0 +1,54 @@
+##Visualisation 
+# creating the data frame for visualisation 
+
+import pandas as pd 
+import folium
+import requests
+import warnings
+warnings.filterwarnings('ignore')
+
+ # Utility function
+ 
+def preprocess_data_per_year(data,df_department,year):
+    # Get data relative to the year entered
+    df_elec=data.loc[data["Année"]==year]
+    # Remove dupplicate values for columns ...
+    df_elec.drop_duplicates(subset=['Code INSEE de la commune'],inplace=True)
+    # Drop missing values 
+    df_elec.dropna(subset=['Code INSEE de la commune', 'Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune'],inplace=True)
+    df_elec.rename(columns={'Code INSEE de la commune': 'code_commune_INSEE'}, inplace=True)
+    df_elec['code_commune_INSEE']=df_elec['code_commune_INSEE'].astype(str)
+    INSEE_codes=set(df_elec['code_commune_INSEE'])
+    df_department=df_department.loc[df_department['code_commune_INSEE'].isin(INSEE_codes)]
+    df_department['code_commune_INSEE']=df_department['code_commune_INSEE'].astype(int)
+    df_elec['code_commune_INSEE']=df_elec['code_commune_INSEE'].astype(int)
+    # Merging the two dataframes
+    df_elec_department=pd.merge(df_department, df_elec, how='inner', on='code_commune_INSEE')
+    df_elec_department.drop_duplicates(subset=['Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune', 'nom_departement'],inplace=True)
+    df_elec_department.dropna(subset=[ 'Nom de la commune'],inplace=True)
+    df_elec_department=df_elec_department[['Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune', 'nom_departement']]
+    df_elec_department=df_elec_department.groupby(['nom_departement']).sum()
+    return df_elec_department
+    
+ # Importing data
+    df_department=pd.read_csv("communes-departement-region.csv")
+data= pd.read_csv('datamap.csv',  sep=';')
+
+
+ # Creating data per department with function
+      
+      cons={}
+for year in range(2018,2022): 
+    data_year=preprocess_data_per_year(data, df_department,year)
+    cons[str(year)] =data_year["Consommation annuelle moyenne de la commune (MWh)"].values
+df_cons_per_depart=pd.DataFrame(cons)
+df_cons_per_depart["departement"]=data_year.index.values
+df_cons_per_depart['avg_consumption'] = df_cons_per_depart.mean(axis=1)
+
+
+ #Print the data frame clean
+ df_cons_per_depart
+ #Tranforming data to csv file
+ df_cons_per_depart[['departement','avg_consumption']].to_csv("data_final.csv", index=False)
+
+    
