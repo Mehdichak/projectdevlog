@@ -6,9 +6,9 @@ import numpy as np
 table = pd.read_csv("PredictionCleanData.csv", sep=";")
 longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
 table["Date - Heure"] = pd.to_datetime(table["Date - Heure"])
-longterm["Date et Heure"] = pd.to_datetime(longterm["Date et Heure"])
+longterm["Date - Heure"] = pd.to_datetime(longterm["Date - Heure"])
 table = table.set_index("Date - Heure")
-longterm = longterm.set_index("Date et Heure")
+longterm = longterm.set_index("Date - Heure")
 
 
 
