@@ -12,5 +12,5 @@ table = table.set_index("Code INSEE de la commune")
 table2=table.groupby(["Code INSEE de la commune","Année"]).mean()
 print(table2.info())
 table.to_csv(path_or_buf="VisualisationCleanData",sep=";")
-
+table2 = table2.dropna()
 table2.to_csv(path_or_buf="VisualisationMeanCleanData",sep=";")
