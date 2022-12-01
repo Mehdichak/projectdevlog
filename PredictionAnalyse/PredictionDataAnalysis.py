@@ -20,6 +20,14 @@ table3.to_csv(sep=";",path_or_buf="DayAgoComparaison.csv")
 print((table2["Consommation (MW)"]*table2["Consommation (MW)"]).mean())
 print((table3["Consommation (MW)"]*table3["Consommation (MW)"]).mean())
 
-
+table["day"] = table.index.dayofyear
 plt.plot(table["Consommation (MW)"].groupby(table.index.dayofyear).mean())
+plt.show()
+Daymean = table * 0
+for i in range(365) :
+    Daymean = Daymean +  table[table["day"] == i] * table.groupby(table.index.dayofyear).mean()
+
+table4 = table - Daymean
+
+plt.plot(table["Consommation (MW)"])
 plt.show()
