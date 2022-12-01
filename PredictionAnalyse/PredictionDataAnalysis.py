@@ -4,36 +4,25 @@ import datetime
 import numpy as np
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-table = pd.read_csv("PredictionCleanData.csv", sep=";")
+
 longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
-table["Date - Heure"] = pd.to_datetime(table["Date - Heure"])
 longterm["Date - Heure"] = pd.to_datetime(longterm["Date - Heure"])
-table = table.set_index("Date - Heure")
 longterm = longterm.set_index("Date - Heure")
 
+# On regarde l'erreur des prédictions naives et naives saisonieres
+NlongtermError = longterm - longterm.shift(-900,freq="s")
+NlongtermError = NlongtermError.dropna()
+SNlongtermError = longterm - longterm.shift(-1,freq="y")
+SNlongtermError = SNlongtermError.dropna()
+
+print(seasonal_decompose(longterm[longterm.index<pd.to_datetime("2022-09-02")],period=7).info())
+
+print((NlongtermError["Consommation (MW)"]*NlongtermError["Consommation (MW)"]).mean())
+print((SNlongtermError["Consommation (MW)"]*SNlongtermError["Consommation (MW)"]).mean())
 
 
-table2 = table - table.shift(7,freq="D")
-table2 = table2.dropna()
-table3 = table - table.shift(1,freq="D")
-table3 = table3.dropna()
-
-table2.to_csv(sep=";",path_or_buf="WeekAgoComparaison.csv")
-table3.to_csv(sep=";",path_or_buf="DayAgoComparaison.csv")
-
-print((table2["Consommation (MW)"]*table2["Consommation (MW)"]).mean())
-print((table3["Consommation (MW)"]*table3["Consommation (MW)"]).mean())
-
-table["day"] = table.index.dayofyear
-
-plt.plot(table["Consommation (MW)"].groupby(table.index.dayofyear).mean())
-plt.show()
-
-plt.plot(table["Consommation (MW)"])
+plt.plot(longterm["Consommation (MW)"].groupby(longterm.index.dayofyear).mean())
 plt.show()
 
 plt.plot(longterm["Consommation (MW)"])
-plt.show()
-
-plt.plot(longterm["Consommation (MW)"].groupby(longterm.index.dayofyear).mean())
 plt.show()
