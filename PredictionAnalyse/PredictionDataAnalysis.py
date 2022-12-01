@@ -4,8 +4,11 @@ import datetime
 import numpy as np
 
 table = pd.read_csv("PredictionCleanData.csv", sep=";")
+longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
 table["Date - Heure"] = pd.to_datetime(table["Date - Heure"])
+longterm["Date et Heure"] = pd.to_datetime(longterm["Date et Heure"])
 table = table.set_index("Date - Heure")
+longterm = longterm.set_index("Date et Heure")
 
 
 
@@ -23,11 +26,10 @@ print((table3["Consommation (MW)"]*table3["Consommation (MW)"]).mean())
 table["day"] = table.index.dayofyear
 plt.plot(table["Consommation (MW)"].groupby(table.index.dayofyear).mean())
 plt.show()
-Daymean = table * 0
-for i in range(365) :
-    Daymean = Daymean +  table[table["day"] == i] * table.groupby(table.index.dayofyear).mean()
-
-table4 = table - Daymean
 
 plt.plot(table["Consommation (MW)"])
+plt.show()
+plt.plot(longterm["Consommation (MW)"])
+plt.show()
+plt.plot(longterm["Consommation (MW)"].groupby(longterm.index.dayofyear).mean())
 plt.show()
