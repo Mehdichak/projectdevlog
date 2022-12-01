@@ -1,0 +1,59 @@
+\documentclass[11pt]{beamer}
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+
+\usepackage[Fr]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\DeclareMathOperator {\argmin}{argmin}
+
+\author{Chakroun Mohamed Mehdi,Axel de Montgolfier, Leroy Nicolas}
+\title{Projet de visualisation-Prédiction}
+
+\newcommand{\email}{email}
+
+\setbeamertemplate{navigation symbols}{} 
+
+\institute[]{Université de Montpellier} 
+
+\date{\today} 
+
+\bibliographystyle{apalike}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Données et but}
+\begin{frame}{Données et but}
+
+ 
+\end{frame}
+
+\section{Visualisation}
+\begin{frame}{Visualisation}
+    \begin{block}{Carte}
+    \end{block}
+\end{frame}
+
+\section{Prédiction}
+\begin{frame}{Prédiction}
+
+
+    \begin{itemize}
+        \item Premier élément
+        \item Second élément
+    \end{itemize}
+    
+    \begin{enumerate}
+        \item Premier élément
+        \item Second élément
+    \end{enumerate}
+\end{frame}
+
+
+\end{document}
