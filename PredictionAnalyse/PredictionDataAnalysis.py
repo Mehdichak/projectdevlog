@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 import numpy as np
+from statsmodels.tsa.seasonal import seasonal_decompose
 
 table = pd.read_csv("PredictionCleanData.csv", sep=";")
 longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
@@ -24,12 +25,15 @@ print((table2["Consommation (MW)"]*table2["Consommation (MW)"]).mean())
 print((table3["Consommation (MW)"]*table3["Consommation (MW)"]).mean())
 
 table["day"] = table.index.dayofyear
+
 plt.plot(table["Consommation (MW)"].groupby(table.index.dayofyear).mean())
 plt.show()
 
 plt.plot(table["Consommation (MW)"])
 plt.show()
+
 plt.plot(longterm["Consommation (MW)"])
 plt.show()
+
 plt.plot(longterm["Consommation (MW)"].groupby(longterm.index.dayofyear).mean())
 plt.show()
