@@ -15,7 +15,11 @@ NlongtermError = NlongtermError.dropna()
 SNlongtermError = longterm - longterm.shift(-1,freq="y")
 SNlongtermError = SNlongtermError.dropna()
 
-print(seasonal_decompose(longterm[longterm.index<pd.to_datetime("2022-09-02")],period=7).info())
+decomposition = seasonal_decompose(longterm["Consommation (MW)"], model='additive', period=365*24*4)  
+fig = decomposition.plot()
+fig.set_size_inches(14, 7)
+plt.show()
+
 
 print((NlongtermError["Consommation (MW)"]*NlongtermError["Consommation (MW)"]).mean())
 print((SNlongtermError["Consommation (MW)"]*SNlongtermError["Consommation (MW)"]).mean())
