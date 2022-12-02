@@ -10,9 +10,9 @@ longterm["Date - Heure"] = pd.to_datetime(longterm["Date - Heure"])
 longterm = longterm.set_index("Date - Heure")
 
 # On regarde l'erreur des prédictions naives et naives saisonieres
-NlongtermError = longterm - longterm.shift(-900,freq="s")
+NlongtermError = longterm - longterm.shift(15,freq="T")
 NlongtermError = NlongtermError.dropna()
-SNlongtermError = longterm - longterm.shift(-1,freq="y")
+SNlongtermError = longterm - longterm.shift(365,freq="D")
 SNlongtermError = SNlongtermError.dropna()
 
 decomposition = seasonal_decompose(longterm["Consommation (MW)"], model='multiplicative', period=365*24*4)  
@@ -27,10 +27,3 @@ plt.show()
 
 print((NlongtermError["Consommation (MW)"]*NlongtermError["Consommation (MW)"]).mean())
 print((SNlongtermError["Consommation (MW)"]*SNlongtermError["Consommation (MW)"]).mean())
-
-
-plt.plot(longterm["Consommation (MW)"].groupby(longterm.index.dayofyear).mean())
-plt.show()
-
-plt.plot(longterm["Consommation (MW)"])
-plt.show()
