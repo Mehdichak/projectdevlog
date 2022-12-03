@@ -4,7 +4,6 @@ import datetime
 import numpy as np
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-
 longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
 longterm["Date - Heure"] = pd.to_datetime(longterm["Date - Heure"])
 longterm = longterm.set_index("Date - Heure")
