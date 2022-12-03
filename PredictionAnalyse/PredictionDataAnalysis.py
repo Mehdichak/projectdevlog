@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
-import numpy as np
 from statsmodels.tsa.seasonal import seasonal_decompose
 
 longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
