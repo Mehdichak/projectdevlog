@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import datetime
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-longterm = pd.read_csv("LongTermCleanData.csv", sep=";")
+longterm = pd.read_csv("PredictionCleanData.csv", sep=";")
 longterm["Date - Heure"] = pd.to_datetime(longterm["Date - Heure"])
 longterm = longterm.set_index("Date - Heure")
 
