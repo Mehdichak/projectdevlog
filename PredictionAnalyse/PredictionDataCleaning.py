@@ -2,7 +2,7 @@ import pandas as pd
 import datetime
 
 # On charge le fichier csv en tant que dataframe
-filepath="predictiondata.csv"
+filepath="ShortTermData.csv"
 filepath2="LongTermData.csv"
 table = pd.read_csv(filepath,sep=";")
 table2 = pd.read_csv(filepath2,sep=";")
@@ -33,4 +33,4 @@ table2 = table2.sort_index(ascending=True)
 
 print(table2.info())
 # On construit un csv
-table2.to_csv(sep=";",path_or_buf="LongTermCleanData.csv")
+table2.to_csv(sep=";",path_or_buf="PredictionCleanData.csv")
