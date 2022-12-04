@@ -1,0 +1,70 @@
+##Visualisation 
+# creating the data frame for visualisation 
+
+import pandas as pd 
+import folium
+import requests
+import warnings
+warnings.filterwarnings('ignore')
+
+ # Utility function
+ 
+def preprocess_data_per_year(data,df_department,year):
+    # Get data relative to the year entered
+    df_elec=data.loc[data["Année"]==year]
+    # Remove dupplicate values for columns ...
+    df_elec.drop_duplicates(subset=['Code INSEE de la commune'],inplace=True)
+    # Drop missing values 
+    df_elec.dropna(subset=['Code INSEE de la commune', 'Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune'],inplace=True)
+    df_elec.rename(columns={'Code INSEE de la commune': 'code_commune_INSEE'}, inplace=True)
+    df_elec['code_commune_INSEE']=df_elec['code_commune_INSEE'].astype(str)
+    INSEE_codes=set(df_elec['code_commune_INSEE'])
+    df_department=df_department.loc[df_department['code_commune_INSEE'].isin(INSEE_codes)]
+    df_department['code_commune_INSEE']=df_department['code_commune_INSEE'].astype(int)
+    df_elec['code_commune_INSEE']=df_elec['code_commune_INSEE'].astype(int)
+    # Merging the two dataframes
+    df_elec_department=pd.merge(df_department, df_elec, how='inner', on='code_commune_INSEE')
+    df_elec_department.drop_duplicates(subset=['Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune', 'nom_departement'],inplace=True)
+    df_elec_department.dropna(subset=[ 'Nom de la commune'],inplace=True)
+    df_elec_department=df_elec_department[['Consommation annuelle moyenne de la commune (MWh)', 'Nom de la commune', 'nom_departement']]
+    df_elec_department=df_elec_department.groupby(['nom_departement']).sum()
+    return df_elec_department
+    
+ # Importing data
+    df_department=pd.read_csv("communes-departement-region.csv")
+data= pd.read_csv('datamap.csv',  sep=';')
+
+
+ # Creating data per department with function
+      
+      cons={}
+for year in range(2018,2022): 
+    data_year=preprocess_data_per_year(data, df_department,year)
+    cons[str(year)] =data_year["Consommation annuelle moyenne de la commune (MWh)"].values
+df_cons_per_depart=pd.DataFrame(cons)
+df_cons_per_depart["departement"]=data_year.index.values
+df_cons_per_depart['avg_consumption'] = df_cons_per_depart.mean(axis=1)
+
+
+ #Print the data frame clean
+ df_cons_per_depart
+ #Tranforming data to csv file
+ df_cons_per_depart[['departement','avg_consumption']].to_csv("data_final.csv", index=False)
+
+  #pour la doc\beamer :
+  #pour la gestion et le nottoyage des datas pour la visualisation, on a créé une fonction qui permet essentiellement d'extraire la consommation de chaque departement et chaque annee. 
+  #nous faisons face à deux problematiques majeures , la premiere etait de separer les donnee de chaque annee, on a donc utiliser data.loc pour separer les annees. Notons que 
+  # year est un des parametres de la fonction . La Deuxieme problematique etait que les departements n'etaient pas presents dans le data frame fourni pour le projet. 
+  #Pour cela on a importee un data frame ou il y avait les communes , leurs code INSEE et le departement auquelles elles appartenaient. 
+  #d'abord nous avons enlevé les doublons dans notre data frame principale ( si une ligne avait le meme code insee , la meme commune et donc la meme consommation moyenne par annee, on l'enleve)
+  # cela via drop_duplicates. 
+  #Ensuite nous avons enlevés les valeurs manquantes via dropna 
+  # nous avons renomme la colonne cde insee de la commune par le meme nom du dataframe importe d'internet afin de pouvoir faire un merge .
+  # nous avons aussi change le type des variables dans les deux dataframes pour pouvoir utiliser la fonction merge (astype)
+  #nous avons en premier lieu transformé les codee insee de notre dta frame principale en string afin de les ajouter dans une liste.
+  #on a cree une liste des codes insee presents dans notre dataframe principale (insee codes) et utiliser df.lock sur le dataframe departement afin d'avoir exactement le meme nombre de communes 
+  # ensuite nous transformons les deux colonnes code insee des deux dataframes en int pour pouvoir effectuer l'egalité 
+  # Nous avons ensuite concatener les deux dataframes via pd.merge avec une condition d'egalité des codes insee 
+  #ensuite nous avons enlevé les doublons 
+  #a la fin nous avons utilise groupby afin davoir la moyenne de consomation par departement 
+  #
