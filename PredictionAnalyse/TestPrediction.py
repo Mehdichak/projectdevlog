@@ -12,17 +12,17 @@ DataToFit = Data["Consommation (MW)"]['2020-05-31':'2022-05-31'].resample("30T")
 DataToPredict = Data["Consommation (MW)"]['2022-06-01':'2022-06-03']
 
 
-
+print("Début du training")
 Fit = ExponentialSmoothing(
     DataToFit,
-    seasonal_periods=2*24*365,
+    seasonal_periods=24*365,
     trend="add",
     seasonal="add",
     use_boxcox=True,
-    freq = "30T",
+    freq = "1H",
     initialization_method="estimated"
 ).fit()
-
+print("Fin du training")
 Fit.fittedvalues.plot(style='--', color='red', label='train')
 plt.show()
 
