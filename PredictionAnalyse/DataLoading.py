@@ -45,7 +45,7 @@ table2 = table2.sort_index(ascending=True)
 table2 = table2.interpolate(method="linear")
 
 # On fusionne les données des deux tables sources
-table2  = table2.append(table)
+table2  = pd.concat([table,table2])
 table2 = table2.sort_index(ascending=True)
 
 # On construit un csv
@@ -53,6 +53,6 @@ table2.to_csv(sep=";",path_or_buf="PredictionCleanData.csv")
 print("Données nettoyées et intégrées dans le fichier PredictionCleanData.csv")
 
 #On supprime les fichiers créés au début de la manipulation
-os.remove(LongTermData.csv)
-os.remove(ShortTermData.csv)
+os.remove("LongTermData.csv")
+os.remove("ShortTermData.csv")
 
