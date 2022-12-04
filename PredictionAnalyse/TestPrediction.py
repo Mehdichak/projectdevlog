@@ -8,7 +8,7 @@ Data["Date - Heure"] = pd.to_datetime(Data["Date - Heure"])
 Data = Data.set_index("Date - Heure")
 
 
-DataToFit = Data["Consommation (MW)"]['2020-05-31':'2022-05-31'].resample("30T").mean()
+DataToFit = Data["Consommation (MW)"]['2021-05-31':'2022-05-31'].resample("30T").mean()
 DataToPredict = Data["Consommation (MW)"]['2022-06-01':'2022-06-03']
 
 
@@ -19,10 +19,12 @@ Fit = ExponentialSmoothing(
     trend="add",
     seasonal="add",
     use_boxcox=True,
-    freq = "1H",
+    freq = "30T",
     initialization_method="estimated"
 ).fit()
 print("Fin du training")
+
+
 Fit.fittedvalues.plot(style='--', color='red', label='train')
 plt.show()
 
