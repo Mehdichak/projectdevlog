@@ -13,13 +13,13 @@ import numpy as np
 from datetime import datetime, timedelta, timezone
 
 import matplotlib.pyplot as plt
-plt.style.use('fivethirtyeight')
+#plt.style.use('fivethirtyeight')
 
 # lecture du fichier csv (a remplacer par le lien !!!)
-df_data=pd.read_csv("LongTermCleanData.csv", sep=";")
+
 
 #fonction prepare data 
-def prepare_data(df_data, date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)"):
+def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)"):
     """ Fonction qui traite les données pour entrainer le modèle. 
     
     Cette fonction enlève les données dupliquées, les données manquantes 
@@ -35,11 +35,12 @@ def prepare_data(df_data, date_initiale='2022-09-24', methode='Prophet', source_
     outputs:
         - df_data (pd.DataFrame): données traitées à fournir au modèle.
     """
+    df_data=pd.read_csv(filepath, sep=";")
     # Enlever les lignes où il manque des informations
-    df_data.dropna(subset=[source_conso], inplace = True)
-    # Convertir la colonne comportant les données en format datetime 
-    df_data['Time'] = df_data["Date - Heure"]
-    #concatener les deux colonnes dates et heures en string 
+    df_data.dropna(subset=[source_conso], inplace = True)  
+    # Dupliquer la colonne indiquant les date
+    df_data['Time'] = df_data["Date - Heure"] 
+    # Convertir la colonne comportant les date en format datetime 
     df_data["Time"]=pd.to_datetime(df_data["Time"])
     #transformation de la colonne en format date time 
     if methode=="Prophet":
@@ -63,7 +64,7 @@ def prepare_data(df_data, date_initiale='2022-09-24', methode='Prophet', source_
     return df_data
 
 
-def predict_for_day(df_data, date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-08', save_model=False, load_model=False):
+def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-08', save_model=False, load_model=False):
     """ Fonction qui prédit pour un jour donné les données de consommation souhaitées.
     
     Inputs :
@@ -82,7 +83,7 @@ def predict_for_day(df_data, date_initiale='2022-09-24', methode='Prophet', sour
         -  graphe des valeurs predites telechargées 
     """
     # Préparer les données via fonctions imbriquées 
-    transformed_data= prepare_data(df_data, date_initiale=date_initiale, methode=methode, source_conso=source_conso)
+    transformed_data= prepare_data(filepath="PredictionCleanData.csv", date_initiale=date_initiale, methode=methode, source_conso=source_conso)
     # Entrainer le modèle 
     if methode=="Prophet":
         if load_model :
@@ -151,7 +152,7 @@ def predict_for_day(df_data, date_initiale='2022-09-24', methode='Prophet', sour
     return resultat
 
 
-resultat=predict_for_day(df_data, date_initiale='2020-11-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-04')
+resultat=predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-11-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-04')
 print(resultat.head(90))
 #ce qui reste afaire imporation des donnees via le lien 
 #version recommandé python 3.7 (facultatif)
