@@ -1,6 +1,6 @@
 # Partie Visualisation du projet :
 
-Cette partie est divisée en trois programmes, ces programmes ont pour objectif de cartographier la consommation d'électricité moyenne en MWh avec plus ou moins de détails. Les données utilisées sont stockées dans le dossier Data pour les données de consommation et le dossier Geojson pour les fichiers de cartes découpées en région ou en commune. La fonction min_max est une fonction utilisant le principe des classes pour donner les consommations maximum et minimum du département donné en entrée. 
+Cette partie est divisée en trois programmes, ces programmes ont pour objectif de cartographier la consommation d'électricité moyenne en MWh avec plus ou moins de détails. Les données utilisées sont stockées dans le dossier Data pour les données de consommation et le dossier Geojson pour les fichiers de cartes découpées en départements ou en commune. La fonction min_max est une fonction utilisant le principe des classes pour donner les consommations maximum et minimum du département donné en entrée. 
 
 ## Visu_commune.py :
 
