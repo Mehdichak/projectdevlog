@@ -41,7 +41,7 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     # Dupliquer la colonne indiquant les date
     df_data['Time'] = df_data["Date - Heure"] 
     # Convertir les colonnes au format datetime 
-    df_data["Time"]=pd.to_datetime(df_data["Time"])
+    df_data['Time']=pd.to_datetime(df_data['Time'])
     df_data["Date - Heure"]=pd.to_datetime(df_data["Date - Heure"])
     df_data.set_index("Date - Heure", inplace=True)
     if methode=="Prophet":
@@ -56,8 +56,6 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
         # Reset_index
         df_data.reset_index(inplace=True, drop=True)
     elif methode=="Holt_Winters":
-        # Pour cette méhode, le temps doit être en index
-        df_data.set_index("Time", inplace=True)
         # Sorting df_data chronologically
         df_data=df_data.sort_index(ascending=True)
         #condition garder la ligne de la date du debut d'entrainement 
@@ -107,9 +105,10 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         #pour eviter de devoir changer la periode a predire donc il calcule automatiquement le nbr de jours 
         # entre la date de fin dentrainement et la date a predire puis la convertir en nbre de quarts d'heure
         #pour savoir jusqu'a quand predire 
-        date_pred = datetime.strptime(date_prediction, "%Y-%m-%d")
-        date_finale = transformed_data["ds"][-1:]
-        jours=(date_pred-date_finale).dt.days.values[0] + 1
+        #date_pred = datetime.strptime(date_prediction, "%Y-%m-%d")
+        date_pred = pd.to_datetime(date_prediction)
+        date_finale = transformed_data["ds"].values[-1]
+        jours=(date_pred-date_finale).days + 1
         period_to_forecast= jours*96
         #fonction future du package prophet qui prepare le tableau de prediction (output)
         future_dates = model.make_future_dataframe(periods=period_to_forecast, freq='15min')
@@ -127,7 +126,7 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         ax.tick_params(axis="x", labelsize=10)
         ax.tick_params(axis="y", labelsize=10)
         #telecharge le graphe 
-        plt.savefig('result.png')
+        plt.savefig('result.svg')
     elif methode=="Holt_Winters":
         #on utilise ici pour les deux methodes un modele additif 
         #u nmodele additif est un modele ou l'ecart type reste constant 
@@ -136,7 +135,7 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         date_pred = datetime.strptime(date_prediction, "%Y-%m-%d")
         # ona observé une saisinalité de 1jour ou d'une semaine
         date_finale = transformed_data.tail(1).index.item().to_pydatetime()
-        jours=(date_pred-date_finale).days+1
+        jours=(date_pred-date_finale).days + 1
         period_to_forecast= jours*96
         fcast =model.forecast(period_to_forecast).rename('Additive')
         resultat=fcast.loc[date_prediction]
@@ -154,7 +153,7 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
     return resultat
 
 
-resultat=predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-11-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-04')
+resultat=predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2021-11-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-06')
 print(resultat.head(90))
 #ce qui reste afaire imporation des donnees via le lien 
 #version recommandé python 3.7 (facultatif)
