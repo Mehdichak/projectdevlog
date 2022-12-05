@@ -27,7 +27,7 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     par les modèles utilisés.
     
     Inputs :
-        - df_data (pd.DataFrame): tableau de données initial obtenu à partir du lien. 
+        - filepath (str): tableau de données initial obtenu à partir du lien. 
         - data_initiale (str): date à partir de laquelle le modèle s'entraine sur les données.
                 Le format doit être "%Y-%m-%d".
         - methode (str): méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
@@ -40,12 +40,14 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     df_data.dropna(subset=[source_conso], inplace = True)  
     # Dupliquer la colonne indiquant les date
     df_data['Time'] = df_data["Date - Heure"] 
-    # Convertir la colonne comportant les date en format datetime 
+    # Convertir les colonnes au format datetime 
     df_data["Time"]=pd.to_datetime(df_data["Time"])
-    #transformation de la colonne en format date time 
+    df_data["Date - Heure"]=pd.to_datetime(df_data["Date - Heure"])
+    df_data.set_index("Date - Heure", inplace=True)
     if methode=="Prophet":
         # Pour cette méthode, le dataframe doit avoir un format particulier
         df_data=df_data[['Time',source_conso]]
+        df_data=df_data[date_initiale:]
         # Rename columns for Prophet forecasting methods
         #la methode prophet requiert un changement des noms des colonnes en ds et y
         #la colonne time ne doit pas etre en index 
@@ -83,7 +85,7 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         -  graphe des valeurs predites telechargées 
     """
     # Préparer les données via fonctions imbriquées 
-    transformed_data= prepare_data(filepath="PredictionCleanData.csv", date_initiale=date_initiale, methode=methode, source_conso=source_conso)
+    transformed_data= prepare_data(filepath=filepath, date_initiale=date_initiale, methode=methode, source_conso=source_conso)
     # Entrainer le modèle 
     if methode=="Prophet":
         if load_model :
