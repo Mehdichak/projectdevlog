@@ -8,7 +8,7 @@ def dataload(finalfilepath="PredictionCleanData.csv"):
     Inputs :
         - finalfilepath (str): Nom utilisé pour la création du fichier CSV.
     Create :
-        - Crée un fichier CSV au nom choisie dans le dossier depuis où la fonction est utilisé
+        - Crée un fichier CSV au nom choisie dans le dossier depuis où la fonction est utilisé dans lequel sont stockés les données prete à utiliser
     """
     # On télécharge les données énedis dans deux fichiers 
     if os.path.exists("TempData1.csv"):
@@ -70,5 +70,3 @@ def dataload(finalfilepath="PredictionCleanData.csv"):
     #On supprime les fichiers créés au début de la manipulation
     os.remove("TempData1.csv")
     os.remove("TempData2.csv")
-
-dataload()
