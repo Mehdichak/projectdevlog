@@ -187,5 +187,4 @@ def display_choropleth(candidate):
 
 
 
-
 app.run_server(debug=True)

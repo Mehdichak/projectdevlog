@@ -72,7 +72,7 @@ app.layout = html.Div([
     html.P("Select a Year and Details:"),
     dcc.Dropdown(
         options = ['2018','2019', '2020', '2021'], 
-        value = '2021', 
+        value = '2018', 
         id='candidate'),
     html.Div(id='dd-output-container'),
     dcc.RadioItems(
@@ -82,6 +82,7 @@ app.layout = html.Div([
                 inline=True
             )
     ,dcc.Graph(id="graph"),
+    dcc.Graph(id='bar-graph'),
 ])
 
 
@@ -272,7 +273,24 @@ def display_choropleth(candidate,candidate2):
                     )
                     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
-
-
+                    
+@app.callback(
+    Output('bar-graph', 'figure'),
+    Input('candidate', 'value'))
+def display_bar(candidate):
+    if candidate == '2018':
+        fig2 = px.bar(df_2018, x='Numero', y='Consommation')
+        return fig2
+    else:
+        if candidate == '2019':
+            fig2 = px.bar(df_2019, x='Numero', y='Consommation')
+            return fig2
+        else:
+            if candidate == '2020':
+                fig2 = px.bar(df_2020, x='Numero', y='Consommation')
+                return fig2
+            else:
+                fig2 = px.bar(df_2021, x='Numero', y='Consommation')
+                return fig2
 
 app.run_server(debug=True)
