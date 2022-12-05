@@ -11,8 +11,8 @@ def somme_conso(x):
     i=0
     m=[]
     for i in range(95):
-        datatemp = x[ x['Numero'].apply(lambda x: int(str(x)[:-3])) == i+1 ]
-        Total = datatemp['Consommation'].sum()
+        datatemp = x[ x['Num_dept'].apply(lambda x: int(str(x)[:-3])) == i+1 ]
+        Total = datatemp['Consommation (MWh)'].sum()
         m = m + [Total]
         i = i+1
     return m
@@ -34,32 +34,32 @@ data_2021 = pd.read_csv("./Projet/Data_Visu/Data/Conso2021.csv", sep=';')
 #Nettoyage des données
 data_2018.drop_duplicates(inplace=True)
 data_2018.dropna(inplace=True)
-data_2018 = data_2018.rename(columns={"Code INSEE de la commune": "Numero", "Nom de la commune": "nom",
-                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation"})
+data_2018 = data_2018.rename(columns={"Code INSEE de la commune": "Num_dept", "Nom de la commune": "nom",
+                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation (MWh)"})
 data_2019.drop_duplicates(inplace=True)
 data_2019.dropna(inplace=True)
-data_2019 = data_2019.rename(columns={"Code INSEE de la commune": "Numero", "Nom de la commune": "nom",
-                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation"})
+data_2019 = data_2019.rename(columns={"Code INSEE de la commune": "Num_dept", "Nom de la commune": "nom",
+                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation (MWh)"})
 data_2020.drop_duplicates(inplace=True)
 data_2020.dropna(inplace=True)
-data_2020 = data_2020.rename(columns={"Code INSEE de la commune": "Numero", "Nom de la commune": "nom",
-                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation"})
+data_2020 = data_2020.rename(columns={"Code INSEE de la commune": "Num_dept", "Nom de la commune": "nom",
+                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation (MWh)"})
 data_2021.drop_duplicates(inplace=True)
 data_2021.dropna(inplace=True)
-data_2021 = data_2021.rename(columns={"Code INSEE de la commune": "Numero", "Nom de la commune": "nom",
-                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation"})
+data_2021 = data_2021.rename(columns={"Code INSEE de la commune": "Num_dept", "Nom de la commune": "nom",
+                        "Consommation annuelle moyenne de la commune (MWh)": "Consommation (MWh)"})
 
 #Data des sommes de consommation par département
-data_final = {'Numero':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation':somme_conso(data_2018)}
+data_final = {'Num_dept':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation (MWh)':somme_conso(data_2018)}
 df_2018 = pd.DataFrame(data_final)
 
-data_final = {'Numero':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation':somme_conso(data_2019)}
+data_final = {'Num_dept':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation (MWh)':somme_conso(data_2019)}
 df_2019 = pd.DataFrame(data_final)
 
-data_final = {'Numero':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation':somme_conso(data_2020)}
+data_final = {'Num_dept':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation (MWh)':somme_conso(data_2020)}
 df_2020 = pd.DataFrame(data_final)
 
-data_final = {'Numero':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation':somme_conso(data_2021)}
+data_final = {'Num_dept':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation (MWh)':somme_conso(data_2021)}
 df_2021 = pd.DataFrame(data_final)
 
 
@@ -101,12 +101,12 @@ def display_choropleth(candidate,candidate2):
                 state_id_map[feature["properties"]["nom"]] = feature["id"]
             fig = px.choropleth_mapbox(
                 df,
-                locations="Numero",
+                locations="Num_dept",
                 geojson=Map,
-                color="Consommation",
+                color="Consommation (MWh)",
                 hover_name="nom",
-                hover_data=["Consommation"],
-                title="Consommation par departement en 2018",
+                hover_data=["Consommation (MWh)"],
+                title="Consommation (MWh) par departement en 2018",
                 mapbox_style="carto-positron",
                 center={"lat": 47, "lon": 2},
                 zoom=4,
@@ -124,12 +124,12 @@ def display_choropleth(candidate,candidate2):
                     state_id_map[feature["properties"]["nom"]] = feature["id"]
                 fig = px.choropleth_mapbox(
                     df,
-                    locations="Numero",
+                    locations="Num_dept",
                     geojson=Map,
-                    color="Consommation",
+                    color="Consommation (MWh)",
                     hover_name="nom",
-                    hover_data=["Consommation"],
-                    title="Consommation par departement en 2019",
+                    hover_data=["Consommation (MWh)"],
+                    title="Consommation (MWh) par departement en 2019",
                     mapbox_style="carto-positron",
                     center={"lat": 47, "lon": 2},
                     zoom=4,
@@ -147,12 +147,12 @@ def display_choropleth(candidate,candidate2):
                         state_id_map[feature["properties"]["nom"]] = feature["id"]
                     fig = px.choropleth_mapbox(
                         df,
-                        locations="Numero",
+                        locations="Num_dept",
                         geojson=Map,
-                        color="Consommation",
+                        color="Consommation (MWh)",
                         hover_name="nom",
-                        hover_data=["Consommation"],
-                        title="Consommation par departement en 2020",
+                        hover_data=["Consommation (MWh)"],
+                        title="Consommation (MWh) par departement en 2020",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
@@ -169,12 +169,12 @@ def display_choropleth(candidate,candidate2):
                         state_id_map[feature["properties"]["nom"]] = feature["id"]
                     fig = px.choropleth_mapbox(
                         df,
-                        locations="Numero",
+                        locations="Num_dept",
                         geojson=Map,
-                        color="Consommation",
+                        color="Consommation (MWh)",
                         hover_name="nom",
-                        hover_data=["Consommation"],
-                        title="Consommation par departement en 2021",
+                        hover_data=["Consommation (MWh)"],
+                        title="Consommation (MWh) par departement en 2021",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
@@ -192,12 +192,12 @@ def display_choropleth(candidate,candidate2):
                 state_id_map[feature["properties"]["nom"]] = feature["id"]
             fig = px.choropleth_mapbox(
                 df,
-                locations="Numero",
+                locations="Num_dept",
                 geojson=Map,
-                color="Consommation",
+                color="Consommation (MWh)",
                 hover_name="Nom_dept",
-                hover_data=["Consommation"],
-                title="Consommation par departement en 2018",
+                hover_data=["Consommation (MWh)"],
+                title="Consommation (MWh) par departement en 2018",
                 mapbox_style="carto-positron",
                 center={"lat": 47, "lon": 2},
                 zoom=4,
@@ -215,12 +215,12 @@ def display_choropleth(candidate,candidate2):
                     state_id_map[feature["properties"]["nom"]] = feature["id"]
                 fig = px.choropleth_mapbox(
                     df,
-                    locations="Numero",
+                    locations="Num_dept",
                     geojson=Map,
-                    color="Consommation",
+                    color="Consommation (MWh)",
                     hover_name="Nom_dept",
-                    hover_data=["Consommation"],
-                    title="Consommation par departement en 2019",
+                    hover_data=["Consommation (MWh)"],
+                    title="Consommation (MWh) par departement en 2019",
                     mapbox_style="carto-positron",
                     center={"lat": 47, "lon": 2},
                     zoom=4,
@@ -238,12 +238,12 @@ def display_choropleth(candidate,candidate2):
                         state_id_map[feature["properties"]["nom"]] = feature["id"]
                     fig = px.choropleth_mapbox(
                         df,
-                        locations="Numero",
+                        locations="Num_dept",
                         geojson=Map,
-                        color="Consommation",
+                        color="Consommation (MWh)",
                         hover_name="Nom_dept",
-                        hover_data=["Consommation"],
-                        title="Consommation par departement en 2020",
+                        hover_data=["Consommation (MWh)"],
+                        title="Consommation (MWh) par departement en 2020",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
@@ -260,12 +260,12 @@ def display_choropleth(candidate,candidate2):
                         state_id_map[feature["properties"]["nom"]] = feature["id"]
                     fig = px.choropleth_mapbox(
                         df,
-                        locations="Numero",
+                        locations="Num_dept",
                         geojson=Map,
-                        color="Consommation",
+                        color="Consommation (MWh)",
                         hover_name="Nom_dept",
-                        hover_data=["Consommation"],
-                        title="Consommation par departement en 2021",
+                        hover_data=["Consommation (MWh)"],
+                        title="Consommation (MWh) par departement en 2021",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
@@ -279,18 +279,18 @@ def display_choropleth(candidate,candidate2):
     Input('candidate', 'value'))
 def display_bar(candidate):
     if candidate == '2018':
-        fig2 = px.bar(df_2018, x='Numero', y='Consommation')
+        fig2 = px.bar(df_2018, x='Num_dept', y='Consommation (MWh)')
         return fig2
     else:
         if candidate == '2019':
-            fig2 = px.bar(df_2019, x='Numero', y='Consommation')
+            fig2 = px.bar(df_2019, x='Num_dept', y='Consommation (MWh)')
             return fig2
         else:
             if candidate == '2020':
-                fig2 = px.bar(df_2020, x='Numero', y='Consommation')
+                fig2 = px.bar(df_2020, x='Num_dept', y='Consommation (MWh)')
                 return fig2
             else:
-                fig2 = px.bar(df_2021, x='Numero', y='Consommation')
+                fig2 = px.bar(df_2021, x='Num_dept', y='Consommation (MWh)')
                 return fig2
 
 app.run_server(debug=True)
