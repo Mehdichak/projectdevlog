@@ -41,10 +41,10 @@ def Visu_Unique():
     pio.renderers.default = 'browser'
 
     #Chargement des données
-    data_2018 = pd.read_csv("./Projet/Data/Conso2018.csv", sep=';')
-    data_2019 = pd.read_csv("./Projet/Data/Conso2019.csv", sep=';')
-    data_2020 = pd.read_csv("./Projet/Data/Conso2020.csv", sep=';')
-    data_2021 = pd.read_csv("./Projet/Data/Conso2021.csv", sep=';')
+    data_2018 = pd.read_csv("./predivis/data/Conso2018.csv", sep=';')
+    data_2019 = pd.read_csv("./predivis/data/Conso2019.csv", sep=';')
+    data_2020 = pd.read_csv("./predivis/data/Conso2020.csv", sep=';')
+    data_2021 = pd.read_csv("./predivis/data/Conso2021.csv", sep=';')
 
     #Nettoyage des données
     data_2018.drop_duplicates(inplace=True)
@@ -110,7 +110,7 @@ def Visu_Unique():
     def display_choropleth(candidate):
         if candidate=='2018':
             df = df_2018
-            Map = json.load(open("./Projet/Data/departements.geojson", "r"))
+            Map = json.load(open("./predivis/data/departements.geojson", "r"))
             state_id_map = {}
             for feature in Map["features"]:
                 feature["id"] = feature["properties"]["code"]
@@ -132,7 +132,7 @@ def Visu_Unique():
         else:
             if candidate=='2019':
                 df = df_2019
-                Map = json.load(open("./Projet/Data/departements.geojson", "r"))
+                Map = json.load(open("./predivis/data/departements.geojson", "r"))
                 state_id_map = {}
                 for feature in Map["features"]:
                     feature["id"] = feature["properties"]["code"]
@@ -154,7 +154,7 @@ def Visu_Unique():
             else :
                 if candidate=='2020':
                     df = df_2020
-                    Map = json.load(open("./Projet/Data/departements.geojson", "r"))
+                    Map = json.load(open("./predivis/data/departements.geojson", "r"))
                     state_id_map = {}
                     for feature in Map["features"]:
                         feature["id"] = feature["properties"]["code"]
@@ -175,7 +175,7 @@ def Visu_Unique():
                     return fig
                 else :
                     df = df_2021
-                    Map = json.load(open("./Projet/Data/departements.geojson", "r"))
+                    Map = json.load(open("./predivis/data/departements.geojson", "r"))
                     state_id_map = {}
                     for feature in Map["features"]:
                         feature["id"] = feature["properties"]["code"]
