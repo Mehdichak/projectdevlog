@@ -100,7 +100,7 @@ def Visu_Unique():
             value="2018",
             inline=True
         ),
-        dcc.Graph(id="graph"),
+        dcc.Graph(id="graph", style={'width': '200vh', 'height': '90vh'}),
     ])
 
 
@@ -128,7 +128,6 @@ def Visu_Unique():
                 zoom=4,
                 opacity=0.5
             )
-            fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
             return fig
         else:
             if candidate=='2019':
@@ -151,7 +150,6 @@ def Visu_Unique():
                     zoom=4,
                     opacity=0.5
                 )
-                fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                 return fig
             else :
                 if candidate=='2020':
@@ -174,7 +172,6 @@ def Visu_Unique():
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
                 else :
                     df = df_2021
@@ -196,7 +193,6 @@ def Visu_Unique():
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
 
 
