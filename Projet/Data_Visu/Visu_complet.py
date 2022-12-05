@@ -25,10 +25,11 @@ def dept_num():
 
 pio.renderers.default = 'browser'
 
-data_2018 = pd.read_csv("./Projet/Data_Visu/Conso2018.csv", sep=';')
-data_2019 = pd.read_csv("./Projet/Data_Visu/Conso2019.csv", sep=';')
-data_2020 = pd.read_csv("./Projet/Data_Visu/Conso2020.csv", sep=';')
-data_2021 = pd.read_csv("./Projet/Data_Visu/Conso2021.csv", sep=';')
+#Chargement des données
+data_2018 = pd.read_csv("./Projet/Data_Visu/Data/Conso2018.csv", sep=';')
+data_2019 = pd.read_csv("./Projet/Data_Visu/Data/Conso2019.csv", sep=';')
+data_2020 = pd.read_csv("./Projet/Data_Visu/Data/Conso2020.csv", sep=';')
+data_2021 = pd.read_csv("./Projet/Data_Visu/Data/Conso2021.csv", sep=';')
 
 #Nettoyage des données
 data_2018.drop_duplicates(inplace=True)
@@ -71,8 +72,9 @@ df_2020 = pd.DataFrame(data_final)
 data_final = {'Numero':dept_num(),'Nom_dept':['Ain','Aisne','Allier','Alpes de Haute-Provence','Hautes-Alpes','Alpes-Maritimes','Ardêche','Ardennes','Ariège','Aube','Aude','Aveyron','Bouches-du-Rhône','Calvados','Cantal','Charente','Charente-Maritime','Cher','Corrèze','Corse',"Côte-d'Or","Côtes d'Armor",'Creuse','Dordogne','Doubs','Drôme','Eure','Eure-et-Loire','Finistère','Gard','Haute-Garonne','Gers','Gironde','Hérault','île-et-vilaine','Indre','Indre-et-Loire','Isère','Jura','Landres','Loir-et-Cher','Loire','Haute-Loire','Loire-Atlantique','Loiret','Lot','Lot-et-Garonne','Lozère','Maine-et-Loire','Manche','Marne','Haute-Marne','Mayenne','Meurthe-et-Moselle','Meuse','Morbihan','Moselle','Nièvre','Nord','Oise','Orne','Pas-de-Calais','Puy-de-Dôme','Pyrénées-Atlantique','Hautes-Pyrénées','Pyrénées-Orientales','Bas-Rhin','Haut-Rhin','Rhône','Haute-Saône','Saône-et-Loire','Sarthe','Savoie','Haute-Savoie','Paris','Seine-Maritime','Seine-et-Marne','Yvelines','Deux-Sèvres','Somme','Tarn','Tarn-et-Garonne','Var','Vaucluse','Vendée','Vienne','Haute-Vienne','Vosges','Yonne','Territoire-de-Belfort','Essone','Hauts-de-Seine','Seine-Saint-Denis','Val-de-Marne',"Val-d'Oise"], 'Consommation':somme_conso(data_2021)}
 df_2021 = pd.DataFrame(data_final)
 
-app = Dash(__name__)
 
+#Visualisation des cartes
+app = Dash(__name__)
 
 app.layout = html.Div([
     html.H4('Consommation moyenne(MWh) par département en fonction du temps'),
@@ -93,7 +95,7 @@ app.layout = html.Div([
 def display_choropleth(candidate):
     if candidate=='2018':
         df = df_2018
-        Map = json.load(open("./Projet/Data_Visu/departements.geojson", "r"))
+        Map = json.load(open("./Projet/Data_Visu/Geojson/departements.geojson", "r"))
         state_id_map = {}
         for feature in Map["features"]:
             feature["id"] = feature["properties"]["code"]
@@ -116,7 +118,7 @@ def display_choropleth(candidate):
     else:
         if candidate=='2019':
             df = df_2019
-            Map = json.load(open("./Projet/Data_Visu/departements.geojson", "r"))
+            Map = json.load(open("./Projet/Data_Visu/Geojson/departements.geojson", "r"))
             state_id_map = {}
             for feature in Map["features"]:
                 feature["id"] = feature["properties"]["code"]
@@ -139,7 +141,7 @@ def display_choropleth(candidate):
         else :
             if candidate=='2020':
                 df = df_2020
-                Map = json.load(open("./Projet/Data_Visu/departements.geojson", "r"))
+                Map = json.load(open("./Projet/Data_Visu/Geojson/departements.geojson", "r"))
                 state_id_map = {}
                 for feature in Map["features"]:
                     feature["id"] = feature["properties"]["code"]
@@ -161,7 +163,7 @@ def display_choropleth(candidate):
                 return fig
             else :
                 df = df_2021
-                Map = json.load(open("./Projet/Data_Visu/departements.geojson", "r"))
+                Map = json.load(open("./Projet/Data_Visu/Geojson/departements.geojson", "r"))
                 state_id_map = {}
                 for feature in Map["features"]:
                     feature["id"] = feature["properties"]["code"]
