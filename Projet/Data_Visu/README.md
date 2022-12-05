@@ -22,5 +22,6 @@ __Note :__ un rafraichissement de l'onglet peut être nécessaire si le chargeme
 
 ## Sources :
 
-Les données de consommation proviennent du site ; [base de donnée](https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure)
-Les données de Cartographie proviennent du site : [base de donnée](https://france-geojson.gregoiredavid.fr/)
+Les données de consommation proviennent du site : [https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/information/](https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/information/).
+
+Les données de Cartographie proviennent du site : [https://france-geojson.gregoiredavid.fr/](https://france-geojson.gregoiredavid.fr/)
