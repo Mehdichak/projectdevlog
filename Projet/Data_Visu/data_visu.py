@@ -41,10 +41,10 @@ def Visu_multiple():
     pio.renderers.default = 'browser'
 
     #Chargement des données
-    data_2018 = pd.read_csv("./Projet/Conso2018.csv", sep=';')
-    data_2019 = pd.read_csv("./Projet/Conso2019.csv", sep=';')
-    data_2020 = pd.read_csv("./Projet/Conso2020.csv", sep=';')
-    data_2021 = pd.read_csv("./Projet/Conso2021.csv", sep=';')
+    data_2018 = pd.read_csv("./Projet/Data/Conso2018.csv", sep=';')
+    data_2019 = pd.read_csv("./Projet/Data/Conso2019.csv", sep=';')
+    data_2020 = pd.read_csv("./Projet/Data/Conso2020.csv", sep=';')
+    data_2021 = pd.read_csv("./Projet/Data/Conso2021.csv", sep=';')
 
     #Nettoyage des données
     data_2018.drop_duplicates(inplace=True)
@@ -90,7 +90,7 @@ def Visu_multiple():
 
 
     #Création de la Carte de France
-    Map = json.load(open("./Projet/departements.geojson", "r"))
+    Map = json.load(open("./Projet/Data/departements.geojson", "r"))
     state_id_map = {}
     for feature in Map["features"]:
         feature["id"] = feature["properties"]["code"]

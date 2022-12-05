@@ -40,10 +40,10 @@ def Visu_Final():
     Create : Lien local 
     """
     #Chargement des données
-    data_2018 = pd.read_csv("./Projet/Conso2018.csv", sep=';')
-    data_2019 = pd.read_csv("./Projet/Conso2019.csv", sep=';')
-    data_2020 = pd.read_csv("./Projet/Conso2020.csv", sep=';')
-    data_2021 = pd.read_csv("./Projet/Conso2021.csv", sep=';')
+    data_2018 = pd.read_csv("./Projet/Data/Conso2018.csv", sep=';')
+    data_2019 = pd.read_csv("./Projet/Data/Conso2019.csv", sep=';')
+    data_2020 = pd.read_csv("./Projet/Data/Conso2020.csv", sep=';')
+    data_2021 = pd.read_csv("./Projet/Data/Conso2021.csv", sep=';')
 
     #Nettoyage des données
     data_2018.drop_duplicates(inplace=True)
@@ -108,7 +108,7 @@ def Visu_Final():
         if candidate2== "Commune":
             if candidate=='2018':
                 df = data_2018
-                Map = json.load(open("./Projet/communes-fin.geojson", "r"))
+                Map = json.load(open("./Projet/Data/communes-fin.geojson", "r"))
                 state_id_map = {}
                 for feature in Map["features"]:
                     feature["id"] = feature["properties"]["code"]
@@ -130,7 +130,7 @@ def Visu_Final():
             else:
                 if candidate=='2019':
                     df = data_2019
-                    Map = json.load(open("./Projet/communes-fin.geojson", "r"))
+                    Map = json.load(open("./Projet/Data/communes-fin.geojson", "r"))
                     state_id_map = {}
                     for feature in Map["features"]:
                         feature["id"] = feature["properties"]["code"]
@@ -152,7 +152,7 @@ def Visu_Final():
                 else :
                     if candidate=='2020':
                         df = data_2020
-                        Map = json.load(open("./Projet/communes-fin.geojson", "r"))
+                        Map = json.load(open("./Projet/Data/communes-fin.geojson", "r"))
                         state_id_map = {}
                         for feature in Map["features"]:
                             feature["id"] = feature["properties"]["code"]
@@ -173,7 +173,7 @@ def Visu_Final():
                         return fig
                     else :
                         df = data_2021
-                        Map = json.load(open("./Projet/communes-fin.geojson", "r"))
+                        Map = json.load(open("./Projet/Data/communes-fin.geojson", "r"))
                         state_id_map = {}
                         for feature in Map["features"]:
                             feature["id"] = feature["properties"]["code"]
@@ -195,7 +195,7 @@ def Visu_Final():
         else:
             if candidate=='2018':
                 df = df_2018
-                Map = json.load(open("./Projet/departements.geojson", "r"))
+                Map = json.load(open("./Projet/Data/departements.geojson", "r"))
                 state_id_map = {}
                 for feature in Map["features"]:
                     feature["id"] = feature["properties"]["code"]
@@ -217,7 +217,7 @@ def Visu_Final():
             else:
                 if candidate=='2019':
                     df = df_2019
-                    Map = json.load(open("./Projet/departements.geojson", "r"))
+                    Map = json.load(open("./Projet/Data/departements.geojson", "r"))
                     state_id_map = {}
                     for feature in Map["features"]:
                         feature["id"] = feature["properties"]["code"]
@@ -239,7 +239,7 @@ def Visu_Final():
                 else :
                     if candidate=='2020':
                         df = df_2020
-                        Map = json.load(open("./Projet/departements.geojson", "r"))
+                        Map = json.load(open("./Projet/Data/departements.geojson", "r"))
                         state_id_map = {}
                         for feature in Map["features"]:
                             feature["id"] = feature["properties"]["code"]
@@ -260,7 +260,7 @@ def Visu_Final():
                         return fig
                     else :
                         df = df_2021
-                        Map = json.load(open("./Projet/departements.geojson", "r"))
+                        Map = json.load(open("./Projet/Data/departements.geojson", "r"))
                         state_id_map = {}
                         for feature in Map["features"]:
                             feature["id"] = feature["properties"]["code"]

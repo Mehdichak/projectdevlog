@@ -40,10 +40,10 @@ def dept_num():
 def fct_min_max(x):
 
     #Chargement des données
-    data_2018 = pd.read_csv("./Projet/Conso2018.csv", sep=';')
-    data_2019 = pd.read_csv("./Projet/Conso2019.csv", sep=';')
-    data_2020 = pd.read_csv("./Projet/Conso2020.csv", sep=';')
-    data_2021 = pd.read_csv("./Projet/Conso2021.csv", sep=';')
+    data_2018 = pd.read_csv("./Projet/Data/Conso2018.csv", sep=';')
+    data_2019 = pd.read_csv("./Projet/Data/Conso2019.csv", sep=';')
+    data_2020 = pd.read_csv("./Projet/Data/Conso2020.csv", sep=';')
+    data_2021 = pd.read_csv("./Projet/Data/Conso2021.csv", sep=';')
 
     #Nettoyage des données
     data_2018.drop_duplicates(inplace=True)
