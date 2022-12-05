@@ -1,4 +1,4 @@
-# Prédiction et de visualisation de consommation électrique
+# Module Predivis
 
 
 ## But du module
