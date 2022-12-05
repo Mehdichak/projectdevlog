@@ -81,7 +81,7 @@ app.layout = html.Div([
                 value = "Departement",
                 inline=True
             )
-    ,dcc.Graph(id="graph"),
+    ,dcc.Graph(id="graph",style={'width': '200vh', 'height': '90vh'}),
     dcc.Graph(id='bar-graph'),
 ])
 
@@ -106,13 +106,12 @@ def display_choropleth(candidate,candidate2):
                 color="Consommation (MWh)",
                 hover_name="nom",
                 hover_data=["Consommation (MWh)"],
-                title="Consommation (MWh) par departement en 2018",
+                title="Carte de la consommation (MWh) par commune en 2018",
                 mapbox_style="carto-positron",
                 center={"lat": 47, "lon": 2},
                 zoom=4,
                 opacity=0.5
             )
-            fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
             return fig
         else:
             if candidate=='2019':
@@ -129,13 +128,12 @@ def display_choropleth(candidate,candidate2):
                     color="Consommation (MWh)",
                     hover_name="nom",
                     hover_data=["Consommation (MWh)"],
-                    title="Consommation (MWh) par departement en 2019",
+                    title="Carte de la consommation (MWh) par commune en 2019",
                     mapbox_style="carto-positron",
                     center={"lat": 47, "lon": 2},
                     zoom=4,
                     opacity=0.5
                 )
-                fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                 return fig
             else :
                 if candidate=='2020':
@@ -152,13 +150,12 @@ def display_choropleth(candidate,candidate2):
                         color="Consommation (MWh)",
                         hover_name="nom",
                         hover_data=["Consommation (MWh)"],
-                        title="Consommation (MWh) par departement en 2020",
+                        title="Carte de la consommation (MWh) par commune en 2020",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
                 else :
                     df = data_2021
@@ -174,13 +171,12 @@ def display_choropleth(candidate,candidate2):
                         color="Consommation (MWh)",
                         hover_name="nom",
                         hover_data=["Consommation (MWh)"],
-                        title="Consommation (MWh) par departement en 2021",
+                        title="Carte de la consommation (MWh) par commune en 2021",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
     else:
         if candidate=='2018':
@@ -197,13 +193,12 @@ def display_choropleth(candidate,candidate2):
                 color="Consommation (MWh)",
                 hover_name="Nom_dept",
                 hover_data=["Consommation (MWh)"],
-                title="Consommation (MWh) par departement en 2018",
+                title="Carte de la consommation (MWh) par departement en 2018",
                 mapbox_style="carto-positron",
                 center={"lat": 47, "lon": 2},
                 zoom=4,
                 opacity=0.5
             )
-            fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
             return fig
         else:
             if candidate=='2019':
@@ -220,13 +215,12 @@ def display_choropleth(candidate,candidate2):
                     color="Consommation (MWh)",
                     hover_name="Nom_dept",
                     hover_data=["Consommation (MWh)"],
-                    title="Consommation (MWh) par departement en 2019",
+                    title="Carte de la consommation (MWh) par departement en 2019",
                     mapbox_style="carto-positron",
                     center={"lat": 47, "lon": 2},
                     zoom=4,
                     opacity=0.5
                 )
-                fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                 return fig
             else :
                 if candidate=='2020':
@@ -243,13 +237,12 @@ def display_choropleth(candidate,candidate2):
                         color="Consommation (MWh)",
                         hover_name="Nom_dept",
                         hover_data=["Consommation (MWh)"],
-                        title="Consommation (MWh) par departement en 2020",
+                        title="Carte de la consommation (MWh) par departement en 2020",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
                 else :
                     df = df_2021
@@ -265,13 +258,12 @@ def display_choropleth(candidate,candidate2):
                         color="Consommation (MWh)",
                         hover_name="Nom_dept",
                         hover_data=["Consommation (MWh)"],
-                        title="Consommation (MWh) par departement en 2021",
+                        title="Carte de la consommation (MWh) par departement en 2021",
                         mapbox_style="carto-positron",
                         center={"lat": 47, "lon": 2},
                         zoom=4,
                         opacity=0.5
                     )
-                    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
                     return fig
                     
 @app.callback(
@@ -279,18 +271,18 @@ def display_choropleth(candidate,candidate2):
     Input('candidate', 'value'))
 def display_bar(candidate):
     if candidate == '2018':
-        fig2 = px.bar(df_2018, x='Num_dept', y='Consommation (MWh)')
+        fig2 = px.bar(df_2018, x='Num_dept', y='Consommation (MWh)',title="Histogramme de la consommation(MWh) moyenne par département en 2018")
         return fig2
     else:
         if candidate == '2019':
-            fig2 = px.bar(df_2019, x='Num_dept', y='Consommation (MWh)')
+            fig2 = px.bar(df_2019, x='Num_dept', y='Consommation (MWh)',title="Histogramme de la consommation(MWh) moyenne par département en 2019")
             return fig2
         else:
             if candidate == '2020':
-                fig2 = px.bar(df_2020, x='Num_dept', y='Consommation (MWh)')
+                fig2 = px.bar(df_2020, x='Num_dept', y='Consommation (MWh)',title="Histogramme de la consommation(MWh) moyenne par département en 2020")
                 return fig2
             else:
-                fig2 = px.bar(df_2021, x='Num_dept', y='Consommation (MWh)')
+                fig2 = px.bar(df_2021, x='Num_dept', y='Consommation (MWh)',title="Histogramme de la consommation(MWh) moyenne par département en 2021")
                 return fig2
 
 app.run_server(debug=True)
