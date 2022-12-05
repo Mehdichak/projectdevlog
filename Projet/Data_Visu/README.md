@@ -1,6 +1,6 @@
 # Partie Visualisation du projet :
 
-Cette partie est divisée en trois programmes, ces programmes ont pour objectif de cartographier la consommation d'éléctricité moyenne en MWh avec plus ou moins de détails.
+Cette partie est divisée en trois programmes, ces programmes ont pour objectif de cartographier la consommation d'éléctricité moyenne en MWh avec plus ou moins de détails. Les données utilisées sont stockées dans le dossier Data pour les données de conosommation et le dossier Geojson pour les fichiers de cartes découpée en région ou en commune. 
 
 ## Visu_commune.py :
 
@@ -19,3 +19,8 @@ __Note :__ Le programme fonctionne avec le module Dash qui créer un lien local 
 Ce programme permet d'afficher chaque carte de consommation moyenne par année dans quatres onglets local séparés. 
 
 __Note :__ un rafraichissement de l'onglet peut être nécessaire si le chargement d'un onglet se bloque lors du lancement du programme. 
+
+## Sources :
+
+Les données de consommation proviennent du site ; [base de donnée](https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure)
+Les données de Cartographie proviennent du site : [base de donnée](https://france-geojson.gregoiredavid.fr/)
