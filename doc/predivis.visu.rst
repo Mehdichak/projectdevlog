@@ -4,34 +4,34 @@ predivis.visu package
 Submodules
 ----------
 
-predivis.visu.data\_visu module
+predivis.visu.datavisu module
 -------------------------------
 
-.. automodule:: predivis.visu.data_visu
+.. automodule:: predivis.visu.datavisu
    :members:
    :undoc-members:
    :show-inheritance:
 
-predivis.visu.min\_max module
+predivis.visu.minmax module
 -----------------------------
 
-.. automodule:: predivis.visu.min_max
+.. automodule:: predivis.visu.minmax
    :members:
    :undoc-members:
    :show-inheritance:
 
-predivis.visu.visu\_commune module
+predivis.visu.visucommune module
 ----------------------------------
 
-.. automodule:: predivis.visu.visu_commune
+.. automodule:: predivis.visu.visucommune
    :members:
    :undoc-members:
    :show-inheritance:
 
-predivis.visu.visu\_complet module
+predivis.visu.visucomplet module
 ----------------------------------
 
-.. automodule:: predivis.visu.visu_complet
+.. automodule:: predivis.visu.visucomplet
    :members:
    :undoc-members:
    :show-inheritance:
