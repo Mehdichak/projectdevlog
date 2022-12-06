@@ -2,6 +2,19 @@ import pandas as pd
 import numpy as np
 
 class min_max:
+    """ Class permettant de définir les deux fonction interne min et max permettant de print la consommation du departement en entrée
+        Input :
+            - id : un numero de departement français 
+        Fonction class :
+            -max : permet de déterminer et print la commune consommant le plus par année
+                Input : 
+                    - x : une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
+                    - u : une année
+            -min : permet de déterminer et print la commune consommant le moins par année
+                Input : 
+                    - x : une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
+                    - u : une année                   
+    """
     def __init__(self, id):
         self.id = id
     
@@ -20,6 +33,12 @@ class min_max:
         print('La consommation min du département',self.id, "pour l'année", u , 'est de' ,a, 'dans la commune de', b)
 
 def somme_conso(x):
+    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste 
+    Input :
+        - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
+    Output :
+        - m : Une liste des consommations (MWh) triée par ordre numérique des départements
+    """
     i=0
     m=[]
     for i in range(95):
@@ -30,6 +49,10 @@ def somme_conso(x):
     return m
 
 def dept_num():
+    """ Fonction qui va lister les nombres de 1 à 95 inclu.
+        Output :
+            - m : Une liste des nombres de 1 à 95 inclu.
+    """
     i = 0
     m = []
     for i in range(95):
@@ -38,6 +61,10 @@ def dept_num():
     return m
 
 def fct_min_max(x):
+    """ Fonction qui va print la commune avec le maximum de consommation(MWh) par année et pour le departement rentré dans la fonction
+        Input :
+            - x : un numéro de département de France métropolitaine
+    """
 
     #Chargement des données
     data_2018 = pd.read_csv("./predivis/data/Conso2018.csv", sep=';')
