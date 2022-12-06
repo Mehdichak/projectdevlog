@@ -2,7 +2,7 @@
 
 Cette partie est divisée en deux programmes, ces programmes ont pour objectif de prédire à partir de données historiques de consommation d'électricité (en MWH) en France, la même consommation pour un jour futur choisi par l'utilisateur.
 
-## DataLoading.py :
+## dataload.py :
 
 Ce programme permet d'obtenir les données à utiliser pour la prédiction sous la forme d'un fichier csv au nom de `PredictionCleanData.csv` . 
 __Note :__ Le programme fonctionne en 3 grandes étapes : 
@@ -14,7 +14,7 @@ __Note :__ Le programme fonctionne en 3 grandes étapes :
 
 
 
-## Predict.py :
+## predict.py :
 
 Ce fichier contient le programme principal qui permet de faire la prédiction pour un jour choisi par l'utilisateur de la consommation de la source choisie selon deux méthodes de prévision différentes. Ce fichier contient deux fonctions : une fonction secondaire `prepare_data` imbriquée dans une fonction principale `predict_for_day` .
 
