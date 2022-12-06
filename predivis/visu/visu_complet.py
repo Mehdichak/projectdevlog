@@ -36,7 +36,8 @@ def dept_num():
 
 def Visu_Unique():
     """ Fonction qui va créer un lien local afin de consulter la visualisation sur un navigateur internet.
-    Create : Lien local 
+        Create : 
+            - Lien local vers la visualisation
     """
     pio.renderers.default = 'browser'
 

@@ -37,7 +37,8 @@ def dept_num():
 
 def Visu_Final():
     """ Fonction qui va créer un lien local afin de consulter la visualisation sur un navigateur internet.
-    Create : Lien local 
+        Create : 
+            - Lien local vers la visualisation 
     """
     #Chargement des données
     data_2018 = pd.read_csv("./predivis/data/Conso2018.csv", sep=';')
