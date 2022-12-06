@@ -18,10 +18,10 @@ __Note :__ Le programme fonctionne en 3 grandes étapes :
 
 Ce fichier contient le programme principal qui permet de faire la prédiction pour un jour choisi par l'utilisateur de la consommation de la source choisie selon deux méthodes de prévision différentes. Ce fichier contient deux fonctions : une fonction secondaire `prepare_data` imbriquée dans une fonction principale `predict_for_day` .
 
-__Note :__Le programme peut faire la prédiction selon deux méthodes différentes : 
-* On peut utiliser le modéle `HOLT WINTERS` à travers la méthode `Exponential Smoothing` présente dans le module `statsmodel`
-* On peut utiliser la methode implémenté dans le package `Prophet` de Facebook. 
-Les hyper parametres de ces modéles ont été choisis pendant la phase initiale de recherche du projet et les modéles retenus ont été utilisés directement dans la fonction prediction.
+__Note :__ Le programme peut faire la prédiction selon deux méthodes différentes : 
+* On peut utiliser le modèle `HOLT WINTERS` à travers la méthode `Exponential Smoothing` présente dans le module `statsmodel`
+* On peut utiliser la méthode implémentée dans le package `Prophet` de Facebook. 
+Les hyper paramètres de ces modèles ont été choisis pendant la phase initiale de recherche du projet et les modèles retenus ont été utilisés directement dans la fonction prédiction.
 
 ## Utilisation du programme : 
 ### Requirements 
