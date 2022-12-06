@@ -4,3 +4,4 @@ PredictionCleanData.csv
 __pycache__
 predivis.egg-info/
 setup.py
+prediction.csv
