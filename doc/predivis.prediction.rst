@@ -7,7 +7,7 @@ Submodules
 predivis.prediction.DataLoading module
 --------------------------------------
 
-.. automodule:: predivis.prediction.DataLoading
+.. automodule:: predivis.prediction.dataload
    :members:
    :undoc-members:
    :show-inheritance:
