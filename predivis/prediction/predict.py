@@ -18,8 +18,7 @@ import matplotlib.pyplot as plt
 def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)"):
     """ Fonction qui traite les données pour entrainer le modèle. 
     
-    Cette fonction met les données au format attendu
-    par le modèle utilisé
+    Cette fonction met les données au format attendu par le modèle utilisé.
     
     Inputs :
         - filepath (str): tableau de données initial obtenu à partir du lien. 
