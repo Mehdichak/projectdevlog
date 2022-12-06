@@ -25,6 +25,7 @@ Les hyper parametres de ces modéles ont été choisis pendant la phase initiale
 
 ## Utilisation du programme : 
 ### Requirements 
+Verifier que les packages sont bien installés dans l'environnement.
 pandas==1.5.1
 numpy==1.23.4
 plotly==5.9.0
