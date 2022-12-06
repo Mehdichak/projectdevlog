@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.io as pio
 
 def somme_conso(x):
-    """Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste 
+    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste 
     Input :
         - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
     Output :
@@ -21,7 +21,7 @@ def somme_conso(x):
     return m
 
 def dept_num():
-    """Fonction qui va lister les nombres de 1 à 95 inclu.
+    """ Fonction qui va lister les nombres de 1 à 95 inclu.
     Output :
         - m : Une liste des nombres de 1 à 95 inclu.
     """
