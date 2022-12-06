@@ -122,7 +122,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         ax.tick_params(axis="y", labelsize=10)
         plt.show()
         resultat = pd.DataFrame(resultat)
-        resultat = resultat[["ds","y"]]
+        resultat = resultat[["ds","yhat"]]
         resultat.to_csv(filepath_out)
         print("Resultat téléchargé intégré au fichier"+filepath_out)
     elif methode=="Holt_Winters":
