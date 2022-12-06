@@ -48,7 +48,7 @@ Pour lacer la prédiction avec la ligne de commande suivante :
 ```
 Cette méthode ne permet pas de modifier les paramètres du programme (la méthode, la source, la date du début d'entraînement, la date à prédire ...).
 ###  via execution  :
-Lancer `Dataloading.py` pour obtenir le data frame (PredictionCleanData.csv) qui se telechargera automatiquement et lancer le programme `predict.py`
+Lancer `Dataloading.py` pour obtenir le data frame (PredictionCleanData.csv) qui se téléchargera automatiquement et lancer le programme `predict.py`
 
 
 
