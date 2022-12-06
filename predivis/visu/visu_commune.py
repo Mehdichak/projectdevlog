@@ -8,10 +8,10 @@ from dash import Dash, dcc, html, Input, Output
 pio.renderers.default = 'browser'
 
 def somme_conso(x):
-    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste.
+    """ Fonction qui va sommer la consommation moyenne des différentes communes pour tous les départements et les renvoyer en tant que liste.
 
         Input :
-            - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
+            - x : Un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
         
         Output :
             - m : Une liste des consommations (MWh) triée par ordre numérique des départements
@@ -26,10 +26,10 @@ def somme_conso(x):
     return m
 
 def dept_num():
-    """ Fonction qui va lister les nombres de 1 à 95 inclu.
+    """ Fonction qui va lister les nombres de 1 à 95 inclus.
 
         Output :
-            - m : Une liste des nombres de 1 à 95 inclu.
+            - m : Une liste des nombres de 1 à 95 inclus.
 
     """
     i = 0

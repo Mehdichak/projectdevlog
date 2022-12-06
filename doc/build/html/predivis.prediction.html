@@ -84,14 +84,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="predivis.prediction.dataload.dataloading">
 <span class="sig-prename descclassname"><span class="pre">predivis.prediction.dataload.</span></span><span class="sig-name descname"><span class="pre">dataloading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finalfilepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PredictionCleanData.csv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predivis.prediction.dataload.dataloading" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>Cette fonction télecharge une partie de la base de donnée fournie par Enedis, la nettoie et en fait un fichier CSV lisible par les algorithmes de prédictions</p>
+<dd><p>Cette fonction télécharge une partie de la base de données fournie par Enedis, la nettoie et en fait un fichier CSV lisible par les algorithmes de prédictions</p>
 <dl class="simple">
 <dt>Inputs :</dt><dd><ul class="simple">
 <li><p>finalfilepath (str): Nom utilisé pour la création du fichier CSV.</p></li>
 </ul>
 </dd>
 <dt>Create :</dt><dd><ul class="simple">
-<li><p>Crée un fichier CSV au nom choisie dans le dossier depuis la où fonction est utilisé dans lequel sont stockés les données prete à utiliser</p></li>
+<li><p>Crée un fichier CSV au nom choisi dans le dossier depuis lequel la fonction est utilisée, dans ce nouveau fichier sont stockés les données prêtent à être utilisées.</p></li>
 </ul>
 </dd>
 </dl>
@@ -106,28 +106,24 @@
 <dd><p>Fonction qui prédit pour un jour donné les données de consommation souhaitées.</p>
 <dl class="simple">
 <dt>Inputs :</dt><dd><ul class="simple">
-<li><p>filepath (str): Chemin d’accés du fichier contenant les données nécessaires à la prédiction.</p></li>
-<li><p>filepath_out (str): Chemin d’accés du fichier CSV des données prédites</p></li>
-<li><dl class="simple">
-<dt>data_initiale (str): date à partir de laquelle le modèle s’entraine sur les données. </dt><dd><p>Le format doit être « %Y-%m-%d ».</p>
-</dd>
-</dl>
-</li>
-<li><p>methode (str): méthode à utiliser pour la prédiction (« Prophet » ou « Holt_Winters »)</p></li>
-<li><p>source_conso (str): grandeur à prédire.</p></li>
-<li><p>date_prediction (str): date de la consommation à prédire. Le format doit être « %Y-%m-%d ».</p></li>
+<li><p>filepath (str): Chemin d’accès du fichier contenant les données nécessaires à la prédiction.</p></li>
+<li><p>filepath_out (str): Chemin d’accès du fichier CSV des données prédites</p></li>
+<li><p>data_initiale (str): Date à partir de laquelle le modèle s’entraîne sur les données. Le format doit être « %Y-%m-%d ».</p></li>
+<li><p>methode (str): Méthode à utiliser pour la prédiction (« Prophet » ou « Holt_Winters »)</p></li>
+<li><p>source_conso (str): Grandeur à prédire.</p></li>
+<li><p>date_prediction (str): Date de la consommation à prédire. Le format doit être « %Y-%m-%d ».</p></li>
 <li><p>save_model (bool): si True, enregistre le modèle dans le dossier actuel sous format JSON.</p></li>
 <li><p>load_model (bool): si True, récupère le modèle enregistré dans le dossier actuel sous format JSON.
-ne fonctionne que si il ya deja un modele enregistre .(que pour la methode prophet)</p></li>
+ne fonctionne que s’il y a deja un modèle enregistré. (que pour la methode prophet)</p></li>
 </ul>
 </dd>
-<dt>outputs: </dt><dd><ul class="simple">
-<li><p>predictions (pd.DataFrame): prédictions pour la grandeur choisie.</p></li>
-<li><p>un fichier CSV contenant les données prédite</p></li>
+<dt>Outputs: </dt><dd><ul class="simple">
+<li><p>predictions (pd.DataFrame): Prédictions pour la grandeur choisie.</p></li>
+<li><p>Un fichier CSV contenant les données prédites</p></li>
 </ul>
 </dd>
-<dt>plot<span class="classifier"></span></dt><dd><ul class="simple">
-<li><p>graphe des valeurs predites telechargées</p></li>
+<dt>Plot<span class="classifier"></span></dt><dd><ul class="simple">
+<li><p>Graphe des valeurs prédites téléchargées</p></li>
 </ul>
 </dd>
 </dl>
@@ -136,22 +132,18 @@ ne fonctionne que si il ya deja un modele enregistre .(que pour la methode proph
 <dl class="py function">
 <dt class="sig sig-object py" id="predivis.prediction.predict.prepare_data">
 <span class="sig-prename descclassname"><span class="pre">predivis.prediction.predict.</span></span><span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PredictionCleanData.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_initiale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2022-09-24'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Prophet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_conso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Consommation</span> <span class="pre">(MW)'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predivis.prediction.predict.prepare_data" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>Fonction qui traite les données pour entrainer le modèle.</p>
+<dd><p>Fonction qui traite les données pour entraîner le modèle.</p>
 <p>Cette fonction met les données au format attendu par le modèle utilisé.</p>
 <dl class="simple">
 <dt>Inputs :</dt><dd><ul class="simple">
-<li><p>filepath (str): tableau de données initial obtenu à partir du lien.</p></li>
-<li><dl class="simple">
-<dt>data_initiale (str): date à partir de laquelle le modèle s’entraine sur les données.</dt><dd><p>Le format doit être « %Y-%m-%d ».</p>
-</dd>
-</dl>
-</li>
-<li><p>methode (str): méthode à utiliser pour la prédiction (« Prophet » ou « Holt_Winters »)</p></li>
-<li><p>source_conso (str): grandeur à prédire.</p></li>
+<li><p>filepath (str): Tableau de données initial obtenu à partir du lien.</p></li>
+<li><p>data_initiale (str): Date à partir de laquelle le modèle s’entraîne sur les données. Le format doit être « %Y-%m-%d ».</p></li>
+<li><p>methode (str): Méthode à utiliser pour la prédiction (« Prophet » ou « Holt_Winters »)</p></li>
+<li><p>source_conso (str): Grandeur à prédire.</p></li>
 </ul>
 </dd>
 <dt>outputs:</dt><dd><ul class="simple">
-<li><p>df_data (pd.DataFrame): données traitées à fournir au modèle.</p></li>
+<li><p>df_data (pd.DataFrame): Données traitées à fournir au modèle.</p></li>
 </ul>
 </dd>
 </dl>
