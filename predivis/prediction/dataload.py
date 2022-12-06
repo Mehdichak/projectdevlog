@@ -3,12 +3,12 @@ import pandas as pd
 import datetime
 import os
 
-def dataload(finalfilepath="PredictionCleanData.csv"):
-    """ Fonction qui télecharge une partie de la base de donnée fournie par Enedis, la nettoie et en fait un fichier CSV lisible par les algorithmes de prédictions  
+def dataloading(finalfilepath="PredictionCleanData.csv"):
+    """ Cette fonction télecharge une partie de la base de donnée fournie par Enedis, la nettoie et en fait un fichier CSV lisible par les algorithmes de prédictions  
     Inputs :
         - finalfilepath (str): Nom utilisé pour la création du fichier CSV.
     Create :
-        - Crée un fichier CSV au nom choisie dans le dossier depuis où la fonction est utilisé dans lequel sont stockés les données prete à utiliser
+        - Crée un fichier CSV au nom choisie dans le dossier depuis la où fonction est utilisé dans lequel sont stockés les données prete à utiliser
     """
     # On télécharge les données énedis dans deux fichiers 
     if os.path.exists("TempData1.csv"):

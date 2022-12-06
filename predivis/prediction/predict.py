@@ -4,12 +4,8 @@ import numpy as np
 from datetime import datetime, timedelta, timezone
 from prophet.serialize import model_to_json, model_from_json
 from statsmodels.tsa.seasonal import seasonal_decompose
-from statsmodels.tsa.api import ExponentialSmoothing, SimpleExpSmoothing, Holt
+from statsmodels.tsa.api import ExponentialSmoothing, Holt
 from prophet import Prophet
-
-
-import pandas as pd
-import numpy as np
 from datetime import datetime, timedelta, timezone
 
 import matplotlib.pyplot as plt
@@ -22,9 +18,8 @@ import matplotlib.pyplot as plt
 def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)"):
     """ Fonction qui traite les données pour entrainer le modèle. 
     
-    Cette fonction enlève les données dupliquées, les données manquantes 
-    et trie les données. Elle met également les données au format attendu
-    par les modèles utilisés.
+    Cette fonction met les données au format attendu
+    par le modèle utilisé
     
     Inputs :
         - filepath (str): tableau de données initial obtenu à partir du lien. 
@@ -47,7 +42,7 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     if methode=="Prophet":
         # Pour cette méthode, le dataframe doit avoir un format particulier
         df_data=df_data[['Time',source_conso]]
-        df_data=df_data[date_initiale:]
+        df_data=df_data[date_initiale:"2022-12-07"]
         # Rename columns for Prophet forecasting methods
         #la methode prophet requiert un changement des noms des colonnes en ds et y
         #la colonne time ne doit pas etre en index 
@@ -64,11 +59,12 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     return df_data
 
 
-def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-08', save_model=False, load_model=False):
+def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.csv", date_initiale='2021-12-07', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-08', save_model=False, load_model=False):
     """ Fonction qui prédit pour un jour donné les données de consommation souhaitées.
     
     Inputs :
-        - df_data (pd.DataFrame): tableau de données initial obtenu à partir du lien. 
+        - filepath (str): Chemin d'accés du fichier contenant les données nécessaires à la prédiction.
+        - filepath_out (str): Chemin d'accés du fichier CSV des données prédites
         - data_initiale (str): date à partir de laquelle le modèle s'entraine sur les données. 
                 Le format doit être "%Y-%m-%d".
         - methode (str): méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
@@ -79,8 +75,9 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
           ne fonctionne que si il ya deja un modele enregistre .(que pour la methode prophet)
     outputs: 
         - predictions (pd.DataFrame): prédictions pour la grandeur choisie.
-    prints : 
-        -  graphe des valeurs predites telechargées 
+        - un fichier CSV contenant les données prédite
+    plot : 
+        - graphe des valeurs predites telechargées 
     """
     # Préparer les données via fonctions imbriquées 
     transformed_data= prepare_data(filepath=filepath, date_initiale=date_initiale, methode=methode, source_conso=source_conso)
@@ -125,8 +122,8 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         ax.set_ylabel(source_conso, size=15)
         ax.tick_params(axis="x", labelsize=10)
         ax.tick_params(axis="y", labelsize=10)
-        #telecharge le graphe 
-        plt.savefig('result.svg')
+        resultat = pd.DataFrame(resultat)
+        resultat.to_csv(filepath_out)
     elif methode=="Holt_Winters":
         #on utilise ici pour les deux methodes un modele additif 
         #u nmodele additif est un modele ou l'ecart type reste constant 
@@ -147,16 +144,9 @@ def predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2022-09-2
         plt.title('Prédictions avec le modèle Holt Winters')
         plt.legend()
         plt.show()
+        resultat = pd.DataFrame(resultat)
+        resultat.to_csv(filepath_out)
     else : 
         print("Méthode non reconnue")
    
     return resultat
-
-
-resultat=predict_for_day(filepath="PredictionCleanData.csv", date_initiale='2021-11-24', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-06')
-print(resultat.head(90))
-#ce qui reste afaire imporation des donnees via le lien 
-#version recommandé python 3.7 (facultatif)
-# comment installer le package prophet 
-# conda activate test2
-# conda install -c conda-forge fbprophet
