@@ -123,6 +123,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         ax.tick_params(axis="y", labelsize=10)
         resultat = pd.DataFrame(resultat)
         resultat.to_csv(filepath_out)
+        print("Resultat téléchargé intégré au fichier"+filepath_out)
     elif methode=="Holt_Winters":
         #on utilise ici pour les deux methodes un modele additif 
         #u nmodele additif est un modele ou l'ecart type reste constant 
@@ -145,6 +146,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         plt.show()
         resultat = pd.DataFrame(resultat)
         resultat.to_csv(filepath_out)
+        print("Resultat téléchargé intégré au fichier"+filepath_out)
     else : 
         print("Méthode non reconnue")
    
