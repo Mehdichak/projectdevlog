@@ -165,3 +165,4 @@ def Visumultiple():
         opacity=0.5,
     )
     fig_2021.show()
+    return 1

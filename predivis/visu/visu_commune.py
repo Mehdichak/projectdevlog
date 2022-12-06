@@ -307,3 +307,4 @@ def Visu_Final():
                     return fig2
 
     app.run_server(debug=True)
+    return 1
