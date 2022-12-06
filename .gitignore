@@ -3,6 +3,4 @@ ShortTermData.csv
 PredictionCleanData.csv
 __pycache__
 predivis.egg-info/
-prediction.csv
 setup.py
-predivis/test/prediction.csv
