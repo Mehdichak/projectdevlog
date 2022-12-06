@@ -10,7 +10,9 @@ Welcome to PrediVis's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   predivis/
+   predivis.visu
+   predivis.prediction
+
 
 Indices and tables
 ==================
