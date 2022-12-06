@@ -1,7 +1,7 @@
 # Module Predivis
 
 <p align="center">
-  <img src="https://github.com/Mehdichak/projectdevlog/blob/master/doc/_images/Logo.jpg" width=400 title="Logo">
+  <img src="https://github.com/Mehdichak/projectdevlog/blob/master/doc/_images/Logo.png" width=400 title="Logo">
 </p>
 
 ## But du module
