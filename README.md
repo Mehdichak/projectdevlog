@@ -1,10 +1,5 @@
 # Module Predivis
 
-<p align="center" scale=30%>
-  <img src="https://github.com/Mehdichak/projectdevlog/blob/main/doc/_images/Logo.png" scale=30% title="Logo">
-</p>
-
-
 ## But du module
 Ce module a pour but d'une part, de représenter la consommation électrique française sur une carte interactive de la France à partir de cette [Base de données](https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/information/), ainsi que de la prédire sur une journée, ceci via cette autre [Base de données](https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure).
 
@@ -15,6 +10,11 @@ Leroy Nicolas nicolas.leroy@etu.umontpellier.fr
 Chakroun Mohamed Mehdi mohamed-mehdi.chakroun@etu.umontpellier.fr
 
 Axel de Montgolfier axel.de-montgolfier@etu.umontpellier.fr
+## Utilisation
+
+ - Pour utiliser la fonction de prédiction predivis.prediction.prepare_for_day(), il est nécessaire de télecharger un fichier auparavent avec la fonction predivis.prediction.dataload(), sans autre arguments celui ci sera placé à l'endroit où est positionné le terminal.
+
+ - Afin d'utiliser les trois fonctions de visualisation, il est nécessaire de se placer dans le dossier projectdevlog/ pour avoir accés aux données nécessaire.
 
 ## Plan
 
