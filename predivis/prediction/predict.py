@@ -76,9 +76,6 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
     Outputs: 
         - predictions (pd.DataFrame): Prédictions pour la grandeur choisie.
         - Un fichier CSV contenant les données prédites
-
-    Plot : 
-        - Graphe des valeurs prédites téléchargées 
     """
     # Préparer les données via fonctions imbriquées 
     transformed_data= prepare_data(filepath=filepath, date_initiale=date_initiale, methode=methode, source_conso=source_conso)
@@ -123,6 +120,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         ax.set_ylabel(source_conso, size=15)
         ax.tick_params(axis="x", labelsize=10)
         ax.tick_params(axis="y", labelsize=10)
+        plt.show()
         resultat = pd.DataFrame(resultat)
         resultat.to_csv(filepath_out)
         print("Resultat téléchargé intégré au fichier"+filepath_out)
