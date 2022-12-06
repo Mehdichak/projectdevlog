@@ -26,12 +26,12 @@ Les hyper parametres de ces modéles ont été choisis pendant la phase initiale
 ## Utilisation du programme : 
 ### Requirements 
 Verifier que les packages sont bien installés dans l'environnement.
-pandas==1.5.1
-numpy==1.23.4
-plotly==5.9.0
-prophet==1.0.1
-statsmodels==0.13.2
-requests==2.28.1
+* pandas==1.5.1
+* numpy==1.23.4
+* plotly==5.9.0
+* prophet==1.0.1
+* statsmodels==0.13.2
+* requests==2.28.1
 
 ### Via la ligne de commande : 
 Il faut d'abord installer le package via pip install 
