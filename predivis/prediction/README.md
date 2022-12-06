@@ -7,9 +7,9 @@ Cette partie est divisée en deux programmes, ces programmes ont pour objectif d
 Ce programme permet d'obtenir les données à utiliser pour la prédiction sous la forme d'un fichier csv au nom de `PredictionCleanData.csv` . 
 __Note :__ Le programme fonctionne en 3 grandes étapes : 
 
-* Récupérer les données brutes (si celles-ci ont été téléchargées avant, elles sont récu^érées dans le dossier sinon elles sont téléchargées directement)
-* Les données sont nettoyées(enlever les données manquantes, les colonnes superflues, trier les données (index),concaténer les données...)et adaptées à la fonction utilisée ultérieurement 
-*  Générer les données préparées pour la prediction en format csv .
+* Récupérer les données brutes (si celles-ci ont été téléchargées avant, elles sont récupérées dans le dossier sinon elles sont téléchargées directement)
+* Les données sont nettoyées (enlever les données manquantes, les colonnes superflues, trier les données (index), concaténer les données...)et adaptées à la fonction utilisée ultérieurement 
+*  Générer les données préparées pour la prédiction en format csv .
 
 
 
