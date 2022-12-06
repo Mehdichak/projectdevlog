@@ -16,7 +16,7 @@ __Note :__ Le programme fonctionne en 3 grandes étapes :
 
 ## Predict.py :
 
-Ce fichier contient le programme principale qui permet de faire la prédiction pour un jour choisi par l'utilisateur de la consommation de la source choisie selon deux methodes de prévisions différentes . Ce fichier contient deux  fonctions : une fonction secondaire `prepare_data` imbriquée dans une fonction principale `predict_for_day` .
+Ce fichier contient le programme principal qui permet de faire la prédiction pour un jour choisi par l'utilisateur de la consommation de la source choisie selon deux méthodes de prévision différentes. Ce fichier contient deux fonctions : une fonction secondaire `prepare_data` imbriquée dans une fonction principale `predict_for_day` .
 
 __Note :__Le programme peut faire la prédiction selon deux méthodes différentes : 
 * On peut utiliser le modéle `HOLT WINTERS` à travers la méthode `Exponential Smoothing` présente dans le module `statsmodel`
