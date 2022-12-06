@@ -1,5 +1,10 @@
 # Module Predivis
 
+<p align="center" scale=30%>
+  <img src="https://github.com/Mehdichak/projectdevlog/blob/main/doc/_images/Logo.png" scale=30% title="Logo">
+</p>
+
+
 ## But du module
 Ce module a pour but d'une part, de représenter la consommation électrique française sur une carte interactive de la France à partir de cette [Base de données](https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/information/), ainsi que de la prédire sur une journée, ceci via cette autre [Base de données](https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure).
 
