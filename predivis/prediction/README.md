@@ -60,6 +60,7 @@ Lancer `Dataloading.py` pour obtenir le data frame (PredictionCleanData.csv) qui
 ## Sources :
 
 Les données (court terme data) de consommation proviennent du site : [ https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure).
+
 Les données (long terme data) de consommation proviennent du site : [https://odre.opendatasoft.com/explore/dataset/eco2mix-national-cons-def/table/?disjunctive.nature&sort=-date_heure).
 
 
