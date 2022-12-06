@@ -8,11 +8,13 @@ from dash import Dash, dcc, html, Input, Output
 pio.renderers.default = 'browser'
 
 def somme_conso(x):
-    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste 
-    Input :
-        - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
-    Output :
-        - m : Une liste des consommations (MWh) triée par ordre numérique des départements
+    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste.
+
+        Input :
+            - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
+        
+        Output :
+            - m : Une liste des consommations (MWh) triée par ordre numérique des départements
     """
     i=0
     m=[]
@@ -25,8 +27,10 @@ def somme_conso(x):
 
 def dept_num():
     """ Fonction qui va lister les nombres de 1 à 95 inclu.
-    Output :
-        - m : Une liste des nombres de 1 à 95 inclu.
+
+        Output :
+            - m : Une liste des nombres de 1 à 95 inclu.
+
     """
     i = 0
     m = []
@@ -37,8 +41,10 @@ def dept_num():
 
 def Visu_Final():
     """ Fonction qui va créer un lien local afin de consulter la visualisation sur un navigateur internet.
+
         Create : 
             - Lien local vers la visualisation 
+            
     """
     #Chargement des données
     data_2018 = pd.read_csv("./predivis/data/Conso2018.csv", sep=';')

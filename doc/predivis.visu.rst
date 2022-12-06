@@ -12,7 +12,7 @@ predivis.visu.data_visu module
    :undoc-members:
    :show-inheritance:
 
-predivis.visu.minmax module
+predivis.visu.min_max module
 -----------------------------
 
 .. automodule:: predivis.visu.min_max

@@ -4,7 +4,7 @@ predivis.prediction package
 Submodules
 ----------
 
-predivis.prediction.DataLoading module
+predivis.prediction.dataload module
 --------------------------------------
 
 .. automodule:: predivis.prediction.dataload
