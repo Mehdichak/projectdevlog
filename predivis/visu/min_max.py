@@ -2,29 +2,29 @@ import pandas as pd
 import numpy as np
 
 class min_max:
-    """ Class permettant de définir les deux fonction interne min et max permettant de print la consommation du departement en entrée
+    """ Class permettant de définir les deux fonctions interne min et max permettant de print la consommation du département en entrée
 
         Input :
-            - id : un numero de departement français 
+            - id : Un numero de département français 
 
 
-        Fonction class :
+        Fonctions class :
 
 
-            -max : permet de déterminer et print la commune consommant le plus par année
-
-
-                Input : 
-                    - x : une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
-                    - u : une année
-
-
-            -min : permet de déterminer et print la commune consommant le moins par année
+            -max : Permet de déterminer et print la commune consommant le plus par année
 
 
                 Input : 
-                    - x : une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
-                    - u : une année   
+                    - x : Une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
+                    - u : Une année
+
+
+            -min : Permet de déterminer et print la commune consommant le moins par année
+
+
+                Input : 
+                    - x : Une dataframe contenant une colonne 'Num_dept' pour le numéro de département, 'nom' pour le nom de la commune et 'Consommation (MWh)' pour les données de consommation
+                    - u : Une année   
                         
 
     """
@@ -46,10 +46,10 @@ class min_max:
         print('La consommation min du département',self.id, "pour l'année", u , 'est de' ,a, 'dans la commune de', b)
 
 def somme_conso(x):
-    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste. 
+    """ Fonction qui va sommer la consommation moyenne des différentes communes pour tous les départements et les renvoyer en tant que liste. 
 
         Input :
-            - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
+            - x : Un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
 
         Output :
             - m : Une liste des consommations (MWh) triée par ordre numérique des départements
@@ -65,10 +65,10 @@ def somme_conso(x):
     return m
 
 def dept_num():
-    """ Fonction qui va lister les nombres de 1 à 95 inclu.
+    """ Fonction qui va lister les nombres de 1 à 95 inclus.
 
         Output :
-            - m : Une liste des nombres de 1 à 95 inclu.
+            - m : Une liste des nombres de 1 à 95 inclus.
 
     """
     i = 0
@@ -79,10 +79,10 @@ def dept_num():
     return m
 
 def fct_min_max(x):
-    """ Fonction qui va print la commune avec le maximum de consommation(MWh) par année et pour le departement rentré dans la fonction.
+    """ Fonction qui va print la commune avec le maximum de consommation (MWh) par année et pour le département rentré dans la fonction.
 
         Input :
-            - x : un numéro de département de France métropolitaine
+            - x : Un numéro de département de France métropolitaine
 
     """
 

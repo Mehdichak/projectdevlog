@@ -5,10 +5,10 @@ import plotly.express as px
 import plotly.io as pio
 
 def sommeconso(x):
-    """ Fonction qui va sommer la consommation moyenne des différentes commune pour tout les départements et les renvoyer en tant que liste. 
+    """ Fonction qui va sommer la consommation moyenne des différentes communes pour tous les départements et les renvoyer en tant que liste. 
 
         Input :
-            - x : un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
+            - x : Un dataframe contenant une colonne "Departement" et "Consommation (MWh)"
             
         Output :
             - m : Une liste des consommations (MWh) triée par ordre numérique des départements
@@ -23,10 +23,10 @@ def sommeconso(x):
     return m
 
 def deptnum():
-    """ Fonction qui va lister les nombres de 1 à 95 inclu.
+    """ Fonction qui va lister les nombres de 1 à 95 inclus.
 
         Output :
-            - m : Une liste des nombres de 1 à 95 inclu.
+            - m : Une liste des nombres de 1 à 95 inclus.
 
     """
     i = 0
@@ -38,10 +38,10 @@ def deptnum():
 
 
 def Visumultiple():
-    """ Fonctions qui va créer 4 cartes de la consommation (MWh) pour chaque année selon un découpage départemental.
+    """ Fonction qui va créer 4 cartes de la consommation (MWh) pour chaque année selon un découpage départemental.
 
         Outputs :
-            - Produit 4 cartes dans des onglets du navigateur internet par défault.
+            - Produit 4 cartes dans des onglets du navigateur internet par défaut.
 
     """
     pio.renderers.default = 'browser'

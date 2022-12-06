@@ -6,7 +6,7 @@
 Welcome to PrediVis's documentation!
 ====================================
 
-Bienvenue sur la documentation du projet PrediVis permettant de prédire la consommation en éléctricité en France sur une journée via le module predict et le projet permet également de visualiser les données de consommation en éléctricité annuelle sur une carte de la France via le module visu.
+Bienvenue sur la documentation du projet PrediVis permettant de prédire la consommation en électricité en France sur une journée via le module predict et le projet permet également de visualiser les données de consommation en électricité annuelle sur une carte de la France via le module visu.
 
 .. toctree::
    :maxdepth: 2

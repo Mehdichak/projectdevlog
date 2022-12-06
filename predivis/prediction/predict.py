@@ -16,18 +16,19 @@ import matplotlib.pyplot as plt
 
 #fonction prepare data 
 def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24', methode='Prophet', source_conso="Consommation (MW)"):
-    """ Fonction qui traite les données pour entrainer le modèle. 
+    """ Fonction qui traite les données pour entraîner le modèle. 
     
     Cette fonction met les données au format attendu par le modèle utilisé.
     
     Inputs :
-        - filepath (str): tableau de données initial obtenu à partir du lien. 
-        - data_initiale (str): date à partir de laquelle le modèle s'entraine sur les données.
-                Le format doit être "%Y-%m-%d".
-        - methode (str): méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
-        - source_conso (str): grandeur à prédire. 
+        - filepath (str): Tableau de données initial obtenu à partir du lien. 
+        - data_initiale (str): Date à partir de laquelle le modèle s'entraîne sur les données. Le format doit être "%Y-%m-%d".
+        - methode (str): Méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
+        - source_conso (str): Grandeur à prédire. 
+
     outputs:
-        - df_data (pd.DataFrame): données traitées à fournir au modèle.
+        - df_data (pd.DataFrame): Données traitées à fournir au modèle.
+        
     """
     df_data=pd.read_csv(filepath, sep=";")
     # Enlever les lignes où il manque des informations
@@ -62,21 +63,22 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
     """ Fonction qui prédit pour un jour donné les données de consommation souhaitées.
     
     Inputs :
-        - filepath (str): Chemin d'accés du fichier contenant les données nécessaires à la prédiction.
-        - filepath_out (str): Chemin d'accés du fichier CSV des données prédites
-        - data_initiale (str): date à partir de laquelle le modèle s'entraine sur les données. 
-                Le format doit être "%Y-%m-%d".
-        - methode (str): méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
-        - source_conso (str): grandeur à prédire. 
-        - date_prediction (str): date de la consommation à prédire. Le format doit être "%Y-%m-%d".
+        - filepath (str): Chemin d'accès du fichier contenant les données nécessaires à la prédiction.
+        - filepath_out (str): Chemin d'accès du fichier CSV des données prédites
+        - data_initiale (str): Date à partir de laquelle le modèle s'entraîne sur les données. Le format doit être "%Y-%m-%d".
+        - methode (str): Méthode à utiliser pour la prédiction ("Prophet" ou "Holt_Winters")
+        - source_conso (str): Grandeur à prédire. 
+        - date_prediction (str): Date de la consommation à prédire. Le format doit être "%Y-%m-%d".
         - save_model (bool): si True, enregistre le modèle dans le dossier actuel sous format JSON.
         - load_model (bool): si True, récupère le modèle enregistré dans le dossier actuel sous format JSON.
-          ne fonctionne que si il ya deja un modele enregistre .(que pour la methode prophet)
-    outputs: 
-        - predictions (pd.DataFrame): prédictions pour la grandeur choisie.
-        - un fichier CSV contenant les données prédite
-    plot : 
-        - graphe des valeurs predites telechargées 
+          ne fonctionne que s'il y a deja un modèle enregistré. (que pour la methode prophet)
+
+    Outputs: 
+        - predictions (pd.DataFrame): Prédictions pour la grandeur choisie.
+        - Un fichier CSV contenant les données prédites
+
+    Plot : 
+        - Graphe des valeurs prédites téléchargées 
     """
     # Préparer les données via fonctions imbriquées 
     transformed_data= prepare_data(filepath=filepath, date_initiale=date_initiale, methode=methode, source_conso=source_conso)
