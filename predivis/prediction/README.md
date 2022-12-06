@@ -25,7 +25,13 @@ Les hyper parametres de ces modéles ont été choisis pendant la phase initiale
 
 ## Utilisation du programme : 
 ### Requirements 
-
+Verifier que les packages sont bien installés dans l'environnement.
+* pandas==1.5.1
+* numpy==1.23.4
+* plotly==5.9.0
+* prophet==1.0.1
+* statsmodels==0.13.2
+* requests==2.28.1
 
 ### Via la ligne de commande : 
 Il faut d'abord installer le package via pip install 
@@ -40,7 +46,9 @@ Pour lacer la prediction avec la ligne de commande suivante
   
 }
 ```
-
+Cette methode ne permet pas de modifier les parametres du programme (la methode , la source , la date du debut d'entrainement, la date a predire ...)
+###  via execution  :
+Lancer `Dataloading.py` pour obtenir le data frame (PredictionCleanData.csv) qui se telechargera automatiquement et lancer le programme `predict.py`
 
 
 
