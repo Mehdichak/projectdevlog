@@ -105,7 +105,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         #date_pred = datetime.strptime(date_prediction, "%Y-%m-%d")
         date_pred = pd.to_datetime(date_prediction)
         date_finale = transformed_data["ds"].values[-1]
-        jours=(date_pred-date_finale).days + 1
+        jours=(date_pred-date_finale).days + 2
         period_to_forecast= jours*96
         #fonction future du package prophet qui prepare le tableau de prediction (output)
         future_dates = model.make_future_dataframe(periods=period_to_forecast, freq='15min')
