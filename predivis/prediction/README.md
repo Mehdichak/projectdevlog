@@ -40,7 +40,7 @@ Il faut d'abord installer le package via pip install
   
 }
 ```
-Pour lacer la prediction avec la ligne de commande suivante 
+Pour lacer la prédiction avec la ligne de commande suivante 
 ```
  {
   
