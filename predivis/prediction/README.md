@@ -1,6 +1,6 @@
 # Partie Prediction du projet :
 
-Cette partie est divisée en deux programmes, ces programmes ont pour objectif de prédire à partir de données historiques de consommation d'electricité (en MWH) en France, la même consommation pour un jour futur choisi par l'utilisateur.
+Cette partie est divisée en deux programmes, ces programmes ont pour objectif de prédire à partir de données historiques de consommation d'électricité (en MWH) en France, la même consommation pour un jour futur choisi par l'utilisateur.
 
 ## DataLoading.py :
 
