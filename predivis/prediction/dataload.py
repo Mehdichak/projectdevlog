@@ -74,3 +74,5 @@ def dataloading(finalfilepath="PredictionCleanData.csv"):
     os.remove("TempData1.csv")
     os.remove("TempData2.csv")
     return 1
+
+dataloading()

@@ -42,19 +42,19 @@ def prepare_data(filepath="PredictionCleanData.csv", date_initiale='2022-09-24',
     if methode=="Prophet":
         # Pour cette méthode, le dataframe doit avoir un format particulier
         df_data=df_data[['Time',source_conso]]
-        df_data=df_data[date_initiale:"2022-12-07"]
+        df_data=df_data[date_initiale:"2022-12-06"]
         # Rename columns for Prophet forecasting methods
         #la methode prophet requiert un changement des noms des colonnes en ds et y
         #la colonne time ne doit pas etre en index 
-        df_data = df_data.rename(columns={'Time': 'ds',
-                            source_conso: 'y'})
+        df_data = df_data.rename(columns={'Time': 'ds', source_conso: 'y'})
         # Reset_index
         df_data.reset_index(inplace=True, drop=True)
     elif methode=="Holt_Winters":
         # Sorting df_data chronologically
         df_data=df_data.sort_index(ascending=True)
+        
         #condition garder la ligne de la date du debut d'entrainement 
-        df_data=df_data[date_initiale:] 
+        df_data=df_data[date_initiale:"2022-12-06"] 
         df_data=df_data[[source_conso]]
     return df_data
 
@@ -126,25 +126,18 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         resultat.to_csv(filepath_out)
         print("Resultat téléchargé intégré au fichier"+filepath_out)
     elif methode=="Holt_Winters":
-        #on utilise ici pour les deux methodes un modele additif 
-        #u nmodele additif est un modele ou l'ecart type reste constant 
-        model = ExponentialSmoothing(transformed_data, seasonal_periods=672, trend='add', seasonal='add', use_boxcox=True).fit()
-        # Définition de la période à prédire
-        date_pred = datetime.strptime(date_prediction, "%Y-%m-%d")
+        model = ExponentialSmoothing(transformed_data, seasonal_periods=4*24*7, trend='add', seasonal='add', use_boxcox=True).fit()
+        date_pred = pd.to_datetime(date_prediction)
         # ona observé une saisinalité de 1jour ou d'une semaine
+        print(date_pred)
         date_finale = transformed_data.tail(1).index.item().to_pydatetime()
+        print(date_finale)
         jours=(date_pred-date_finale).days + 1
+        print(jours)
         period_to_forecast= jours*96
         fcast =model.forecast(period_to_forecast).rename('Additive')
-        resultat=fcast.loc[date_prediction]
-        # Visualisation des résultats 
-        transformed_data.plot(marker='o', color='black', legend=True, figsize=(10, 5))
-        model.fittedvalues.plot(style='--', color='red', label='train')
-        fcast.plot(style='--', color='green', label='prediction')
-        plt.ylabel(source_conso)
-        plt.title('Prédictions avec le modèle Holt Winters')
-        plt.legend()
-        plt.show()
+        print(fcast)
+        resultat=fcast[:672]
         resultat = pd.DataFrame(resultat)
         resultat.to_csv(filepath_out)
         print("Resultat téléchargé intégré au fichier"+filepath_out)
@@ -152,3 +145,7 @@ def predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction.
         print("Méthode non reconnue")
    
     return resultat
+
+
+
+predict_for_day(filepath="PredictionCleanData.csv",filepath_out="prediction3.csv", date_initiale='2021-12-07', methode='Prophet', source_conso="Consommation (MW)", date_prediction='2022-12-07', save_model=False, load_model=False)
